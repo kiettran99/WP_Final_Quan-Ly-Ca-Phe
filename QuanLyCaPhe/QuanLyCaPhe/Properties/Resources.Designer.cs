@@ -63,9 +63,45 @@ namespace QuanLyCaPhe.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap nganh_ke_toan_hutech2 {
             get {
                 object obj = ResourceManager.GetObject("nganh-ke-toan-hutech2", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap _1Them {
+            get {
+                object obj = ResourceManager.GetObject("1Them", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2Sua {
+            get {
+                object obj = ResourceManager.GetObject("2Sua", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _3Xoa {
+            get {
+                object obj = ResourceManager.GetObject("3Xoa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Luu {
+            get {
+                object obj = ResourceManager.GetObject("Luu", resourceCulture);
+>>>>>>> f976d1c60efd27f865a613767772a61413f8e6eb
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,6 +1,6 @@
 ﻿namespace QuanLyCaPhe
 {
-    partial class Form1
+    partial class FormThanhPho
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // FormThanhPho
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1210, 539);
+            this.Name = "FormThanhPho";
+            this.Text = "FormThanhPho";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
     }
 }
-
