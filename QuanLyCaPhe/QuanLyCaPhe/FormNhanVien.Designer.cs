@@ -1,6 +1,6 @@
 ﻿namespace QuanLyCaPhe
 {
-    partial class NhanVien
+    partial class FormNhanVien
     {
         /// <summary>
         /// Required designer variable.

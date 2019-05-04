@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyCaPhe
 {
-    public partial class NhanVien : Form
+    public partial class FormNhanVien : Form
     {
-        public NhanVien()
+        public FormNhanVien()
         {
             InitializeComponent();
         }

@@ -22,5 +22,28 @@ namespace QuanLyCaPhe
             FormDangNhap formdangnhap = new FormDangNhap();
             formdangnhap.ShowDialog();
         }
+
+        private void menuNhanVien_Click(object sender, EventArgs e)
+        {
+            FormNhanVien nv = new FormNhanVien();
+            nv.ShowDialog();
+        }
+
+        private void menuBanHang_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void menuHoaDon_Click(object sender, EventArgs e)
+        {
+            FormHoaDon hd = new FormHoaDon();
+            hd.ShowDialog();
+        }
+
+        private void menuThanhPho_Click(object sender, EventArgs e)
+        {
+            FormThanhPho tp = new FormThanhPho();
+            tp.ShowDialog();
+        }
     }
 }
