@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace QuanLyCaPhe
 {
-    public partial class FormKhachHang : Form
+    public partial class FormThanhPho : Form
     {
-        public FormKhachHang()
+        public FormThanhPho()
         {
             InitializeComponent();
-        }
-
-        private void btThem_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }
