@@ -16,5 +16,10 @@ namespace QuanLyCaPhe
         {
             InitializeComponent();
         }
+
+        private void txtTen_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
