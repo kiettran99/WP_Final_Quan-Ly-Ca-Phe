@@ -36,9 +36,9 @@ create table DangNhap(
 )
 
 create table ThanhPho (
-	MaThanhPho varchar(10),
+	MaThanhPho int,
 	TenThanhPho varchar(20),
-	primary key(MaThanhPho)
+	primary key(TenThanhPho)
 )
 
 delete from KhachHang

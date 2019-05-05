@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BSLayer\DangNhap.cs" />
     <Compile Include="BSLayer\NhanVien.cs" />
+    <Compile Include="BSLayer\ThanhPho.cs" />
     <Compile Include="DSLayer\DBMain.cs" />
     <Compile Include="FormDangNhap.cs">
       <SubType>Form</SubType>

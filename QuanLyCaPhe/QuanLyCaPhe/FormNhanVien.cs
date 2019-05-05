@@ -22,8 +22,7 @@ namespace QuanLyCaPhe
         }
         void LoadData()
         {
-            try
-            {
+           
                 try
                 {
                     dataTable = new DataTable();
@@ -34,9 +33,9 @@ namespace QuanLyCaPhe
                     dgvNhanVien.DataSource = dataTable;
                     
                 }
-                catch
+                catch(SqlException errr)
                 {
-                    MessageBox.Show("Load khong thanh cong");
+                    MessageBox.Show(errr.Message);
                 }
                 txtMaNV.ResetText();
                 txtTenNV.ResetText();
@@ -54,11 +53,7 @@ namespace QuanLyCaPhe
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
                 
-            }
-            catch (SqlException)
-            {
-                MessageBox.Show("Lỗi rồi không Load được");
-            }
+            
         }
         bool them;
         private void btnThem_Click(object sender, EventArgs e)

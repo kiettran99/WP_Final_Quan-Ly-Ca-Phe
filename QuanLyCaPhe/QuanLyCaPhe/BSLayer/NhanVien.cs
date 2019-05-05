@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using QuanLyCaPhe.DBLayer;
 using System.Data;
+using System.Data.SqlClient;
 namespace QuanLyCaPhe.BSLayer
 {
     class NhanVien
@@ -44,7 +45,7 @@ namespace QuanLyCaPhe.BSLayer
                     "',Nu='" + Nu + "',NgayBD='" + NgayNV + "',NgaySinh='" + NgaySinh +
                     "',DiaChi=N'" + DiaChi + "',SDT='" + SDT + "' Where MaNV= '" + MaNV + "'";
             }
-            catch(Exception)
+            catch(SqlException)
             {
                 error = "Sửa không được";
                 return false;

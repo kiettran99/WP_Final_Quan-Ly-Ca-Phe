@@ -104,5 +104,36 @@ namespace QuanLyCaPhe.DBLayer
 
             return obj;
         }
+
+        /// <summary>
+        /// Kiểm tra thông tin tài khoản.
+        /// </summary>
+        /// 
+        public bool CheckThongTin(string strSQL, CommandType ct, ref string error)
+        {
+            bool f = false;
+
+            try
+            {
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+                conn.Open();
+
+                cmd.CommandText = strSQL;
+                cmd.CommandType = ct;
+                int k = Int32.Parse(cmd.ExecuteScalar().ToString());
+                if (k > 0)                
+                    f = true;                                    
+            }
+            catch (SqlException sqlEx)
+            {
+                error = sqlEx.Message;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return f;
+        }
     }
 }
