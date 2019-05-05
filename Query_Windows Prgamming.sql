@@ -1,15 +1,9 @@
-use master
-
-drop database if exists QuanLyCaPhe
 	
 create database QuanLyCaPhe
-
+go
 use QuanLyCaPhe
 
-drop table if exists KhachHang
-drop table if exists NhanVien
-drop table if exists ThanhPho
-drop table if exists DangNhap
+go
 
 create table KhachHang (
 	MaKH varchar(20) not null,
@@ -26,11 +20,12 @@ create table NhanVien(
 	MaNV varchar(20) not null,
 	HoNV varchar(20),
 	TenNV varchar(20),
-	GioiTinh varchar(10),
+	Nu		bit,
 	NgaySinh date,
 	SDT varchar(20),
 	DiaChi varchar(30),
 	NgayBD datetime,
+
 	primary key(MaNV)
 )
 
