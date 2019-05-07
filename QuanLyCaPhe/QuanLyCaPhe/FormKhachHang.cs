@@ -46,6 +46,7 @@ namespace QuanLyCaPhe
                 btnHuy.Enabled = false;
                 cbGioiTinh.SelectedIndex = 0;
 
+                DgvKH_CellClick(null, null);
             }
             catch (Exception errr)
             {
@@ -57,7 +58,6 @@ namespace QuanLyCaPhe
         {
             them = true;
 
-            tbTen.ResetText();
             btThem.Enabled = false;
             btSua.Enabled = false;
             BtXoa.Enabled = false;
@@ -65,6 +65,15 @@ namespace QuanLyCaPhe
             btnReload.Enabled = false;
             btnHuy.Enabled = true;
             btLuu.Enabled = true;
+            
+            tbTen.ResetText();
+            tbMKH.ResetText();
+            tbDiaChi.ResetText();
+            tbHKH.ResetText();
+            tbSDT.ResetText();
+            
+            Random rd = new Random();
+            tbMKH.Text = rd.Next(0, 10000).ToString();
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -85,11 +94,12 @@ namespace QuanLyCaPhe
             {
                 if (them)
                 {
+
                     kh.ThemKhachHang(tbMKH.Text, tbHKH.Text, tbTen.Text, tbSDT.Text, tbDiaChi.Text, cbGioiTinh.Text, dtNgaySinh.Value, ref error);
                     // Load lại DataGridView
                     LoadData();
                     // THông Báo
-                    MessageBox.Show(error);
+                   // MessageBox.Show(error);
                 }
                 else
                 {
@@ -98,7 +108,7 @@ namespace QuanLyCaPhe
                     // Load lại DataGridView
                     LoadData();
                     // THông Báo
-                    MessageBox.Show(error);
+                   // MessageBox.Show(error);
                 }
             }
         }
@@ -152,15 +162,26 @@ namespace QuanLyCaPhe
             try
             {
                 int r = DgvKH.CurrentCell.RowIndex;
+                // tbMKH.Text = ran
                 tbMKH.Text = DgvKH.Rows[r].Cells[0].Value.ToString();
                 tbHKH.Text = DgvKH.Rows[r].Cells[1].Value.ToString();
                 tbTen.Text = DgvKH.Rows[r].Cells[2].Value.ToString();
-                cbGioiTinh.Text = tbTen.Text = DgvKH.Rows[r].Cells[3].Value.ToString();
+                cbGioiTinh.Text = DgvKH.Rows[r].Cells[3].Value.ToString();
                 dtNgaySinh.Value = (DateTime)DgvKH.Rows[r].Cells[4].Value;
-                tbSDT.Text = tbTen.Text = DgvKH.Rows[r].Cells[5].Value.ToString();
+                tbSDT.Text = DgvKH.Rows[r].Cells[5].Value.ToString();
                 tbDiaChi.Text = DgvKH.Rows[r].Cells[6].Value.ToString();
             }
-            catch { }         
+            catch { }
+        }
+
+        private void FormKhachHang_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void tbMKH_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -23,22 +23,22 @@ namespace QuanLyCaPhe.BSLayer
             return db.ExecuteQueryDataSet(strSQL, CommandType.Text);
         }
 
-        public bool ThemKhachHang(string maThanhPho, string hoKhachHang, string tenKhachHang, string soDienThoai, string diachi, string gioiTinh, DateTime ngaySinh, ref string error)
+        public bool ThemKhachHang(string maKhachHang, string hoKhachHang, string tenKhachHang, string soDienThoai, string diachi, string gioiTinh, DateTime ngaySinh, ref string error)
         {
-            string strSQL = $"insert into KhachHang values('{maThanhPho.Trim()}, ''{hoKhachHang.Trim()}', '{tenKhachHang.Trim()}', '{gioiTinh.Trim()}','{ngaySinh.ToShortDateString()}', '{soDienThoai.Trim()}', '{diachi.Trim()}')";
+            string strSQL = $"insert into KhachHang values('{maKhachHang.Trim()}', '{hoKhachHang.Trim()}', '{tenKhachHang.Trim()}', '{gioiTinh.Trim()}','{ngaySinh.ToShortDateString()}', '{soDienThoai.Trim()}', '{diachi.Trim()}')";
             return db.MyExecuteNonQuery(strSQL, CommandType.Text, ref error);
         }
 
-        public bool SuaKhachHang(string maThanhPho, string hoKhachHang, string tenKhachHang, string soDienThoai, string diachi, string gioiTinh, DateTime ngaySinh, ref string error)
+        public bool SuaKhachHang(string maKhachhang, string hoKhachHang, string tenKhachHang, string soDienThoai, string diachi, string gioiTinh, DateTime ngaySinh, ref string error)
         {
-            string strSQL = $"update KhachHang set HoKH = '{hoKhachHang}', TenKH = '{tenKhachHang}', GioiTinh = '{gioiTinh}', NgaySinh = '{ngaySinh.ToLongDateString()}', SDT = '{soDienThoai}', DiaChi = '{diachi}'";
+            string strSQL = $"update KhachHang set HoKH = '{hoKhachHang}', TenKH = '{tenKhachHang}', GioiTinh = '{gioiTinh}', NgaySinh = '{ngaySinh.ToShortDateString()}', SDT = '{soDienThoai}', DiaChi = '{diachi}' where MAKH = '{maKhachhang}'";
             return db.MyExecuteNonQuery(strSQL, CommandType.Text, ref error);
         }
 
-        public bool XoaKhachHang(string maThanhPho, ref string error)
+        public bool XoaKhachHang(string MaKhachHang, ref string error)
         {
-            string strSQL = $"delete from ThanhPho where MaThanhPho = '{maThanhPho}'";
-            return db.MyExecuteNonQuery(strSQL, CommandType.Text, ref error);
+            string sqlString = "Delete From KhachHang Where MaKH='" + MaKhachHang + "'";
+            return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
     }
 }
