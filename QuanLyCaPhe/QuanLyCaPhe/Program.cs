@@ -16,7 +16,11 @@ namespace QuanLyCaPhe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new FormDangNhap());
+=======
+            Application.Run(new FormKhachHang());
+>>>>>>> ff524a0458f8a8e833e76e52ceaf8fb84424de82
         }
     }
 }
