@@ -48,36 +48,11 @@ namespace QuanLyCaPhe
                 // không cho thao tác trên các nút lưu/hủy
                 btnHuy.Enabled = false;
                 btnLuu.Enabled = false;              
-                // cho phép thao tác trên thêm/sửa/xóa/thoát
-                btnThem.Enabled = true;
+                // cho phép thao tác trên thêm/sửa/xóa/thoát               
                 btnSua.Enabled = true;
-                btnXoa.Enabled = true;
-                
-            
+                                          
         }
         bool them;
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            them = true;
-
-            btnThem.Enabled = false;
-            btnSua.Enabled = false;
-            btnXoa.Enabled = false;
-            btnReLoad.Enabled = false;
-            btnThoat.Enabled = false;
-
-            btnLuu.Enabled = true;
-            btnHuy.Enabled = true;
-
-            txtMaNV.ResetText();
-            txtTenNV.ResetText();
-            txtHoNV.ResetText();
-            txtDiaChi.ResetText();
-            txtDienThoai.ResetText();
-            txtHoNV.ResetText();
-            dtbNgayNV.ResetText();
-            dtbNgaySinh.ResetText();
-        }
 
         private void btnReLoad_Click(object sender, EventArgs e)
         {
@@ -111,22 +86,7 @@ namespace QuanLyCaPhe
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (them)
-            {
-
-                //thuc hiện lệnh
-                NhanVien blnv = new NhanVien();
-                blnv.ThemNhanVien(txtMaNV.Text, txtHoNV.Text.Trim(), txtTenNV.Text.Trim(), rdbNu.Checked, dtbNgayNV.Value,
-                    dtbNgaySinh.Value, txtDiaChi.Text.Trim(), txtDienThoai.Text.Trim(), ref err);
-                // Load lại DataGridView
-                LoadData();
-                // THông Báo
-                MessageBox.Show(err);
-
-            }
-            else
-            {
-
+            
                 //thuc hiện lệnh
                 NhanVien blnv = new NhanVien();
                 blnv.SuaNhanVien(txtMaNV.Text, txtHoNV.Text.Trim(), txtTenNV.Text.Trim(), rdbNu.Checked, dtbNgayNV.Value,
@@ -135,16 +95,16 @@ namespace QuanLyCaPhe
                 LoadData();
                 // THông Báo
                 MessageBox.Show(err);
-            }
+            
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             them =false;
 
-            btnThem.Enabled = false;
+            
             btnSua.Enabled = false;
-            btnXoa.Enabled = false;
+           
             btnReLoad.Enabled = false;
             btnThoat.Enabled = false;
 
@@ -163,32 +123,14 @@ namespace QuanLyCaPhe
 
             dgvNhanVien_CellClick(null, null);
         }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-          
-           
-            DialogResult kq = new DialogResult();
-            kq=MessageBox.Show("Bạn thực sự muốn xóa", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (kq == DialogResult.OK)
-            {
-                
-                    BLNV.Xoa(ref err, txtMaNV.Text);
-                    // load dữ liệu
-                    LoadData();
-              
-                MessageBox.Show(err);
-            }
-            else
-                dgvNhanVien.Focus();
-        }
+        
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
             dgvNhanVien_CellClick(null, null);
-            btnThem.Enabled = true;
+            
             btnSua.Enabled = true;
-            btnXoa.Enabled = true;
+         
             btnThoat.Enabled = true;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;

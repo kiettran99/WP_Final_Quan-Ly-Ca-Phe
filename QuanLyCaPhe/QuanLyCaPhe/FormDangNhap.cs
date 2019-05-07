@@ -14,7 +14,7 @@ namespace QuanLyCaPhe
     {       
         DangNhap DN = new DangNhap();
         string err;
-        
+       
         public FormDangNhap()
         {
             InitializeComponent();
@@ -22,8 +22,22 @@ namespace QuanLyCaPhe
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            DN.KiemTra(txtTen.Text.Trim(), txtMatKhau.Text.Trim(), ref err);
+
+            if(DN.KiemTra(txtTen.Text.Trim(), txtMatKhau.Text.Trim(), ref err)==true)
+            {
+                if (txtTen.Text.Trim() == "admin" && txtMatKhau.Text.Trim() == "admin")
+                {
+                    FormAdmin formAdmin = new FormAdmin();
+                    formAdmin.ShowDialog();
+                }
+                else
+                {
+                    FormNhanVien formNhanVien = new FormNhanVien();
+                    formNhanVien.ShowDialog();
+                }
+            }
             MessageBox.Show(err);
+           
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

@@ -45,5 +45,17 @@ namespace QuanLyCaPhe
             FormThanhPho tp = new FormThanhPho();
             tp.ShowDialog();
         }
+
+        private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormManHinhChinh_Load(object sender, EventArgs e)
+        {
+            panel1.Enabled = false;
+            panel2.Enabled = false;
+            panel3.Enabled = false;
+        }
     }
 }
