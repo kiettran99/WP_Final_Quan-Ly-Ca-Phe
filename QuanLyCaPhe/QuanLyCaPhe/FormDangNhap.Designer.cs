@@ -102,7 +102,7 @@
             // 
             this.btnThoat.BackColor = System.Drawing.Color.Yellow;
             this.btnThoat.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(256, 159);
+            this.btnThoat.Location = new System.Drawing.Point(292, 159);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(141, 29);
@@ -115,7 +115,7 @@
             // 
             this.btnDangNhap.BackColor = System.Drawing.Color.Red;
             this.btnDangNhap.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangNhap.Location = new System.Drawing.Point(43, 159);
+            this.btnDangNhap.Location = new System.Drawing.Point(147, 159);
             this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(141, 29);
@@ -130,6 +130,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
+            this.CancelButton = this.btnThoat;
             this.ClientSize = new System.Drawing.Size(449, 205);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnThoat);
@@ -138,6 +139,7 @@
             this.Name = "FormDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";
+            this.Load += new System.EventHandler(this.FormDangNhap_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
