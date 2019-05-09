@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnThongKe = new System.Windows.Forms.Button();
@@ -110,7 +110,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -138,21 +138,22 @@
             this.gbChiTiet.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage6);
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(0, 2);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1052, 583);
-            this.tabControl1.TabIndex = 0;
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage3);
+            this.tabControl.Controls.Add(this.tabPage4);
+            this.tabControl.Controls.Add(this.tabPage5);
+            this.tabControl.Controls.Add(this.tabPage6);
+            this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl.Location = new System.Drawing.Point(0, 2);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(1052, 583);
+            this.tabControl.TabIndex = 0;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -717,6 +718,7 @@
             this.btnReloadNV.TabIndex = 21;
             this.btnReloadNV.Text = "ReLoad";
             this.btnReloadNV.UseVisualStyleBackColor = false;
+            this.btnReloadNV.Click += new System.EventHandler(this.btnReloadNV_Click);
             // 
             // btnHuyNV
             // 
@@ -728,6 +730,7 @@
             this.btnHuyNV.TabIndex = 20;
             this.btnHuyNV.Text = "Hủy";
             this.btnHuyNV.UseVisualStyleBackColor = false;
+            this.btnHuyNV.Click += new System.EventHandler(this.btnHuyNV_Click);
             // 
             // btnLuuNV
             // 
@@ -739,6 +742,7 @@
             this.btnLuuNV.TabIndex = 19;
             this.btnLuuNV.Text = "Lưu";
             this.btnLuuNV.UseVisualStyleBackColor = false;
+            this.btnLuuNV.Click += new System.EventHandler(this.btnLuuNV_Click);
             // 
             // btnXoaNV
             // 
@@ -750,6 +754,7 @@
             this.btnXoaNV.TabIndex = 18;
             this.btnXoaNV.Text = "Xóa";
             this.btnXoaNV.UseVisualStyleBackColor = false;
+            this.btnXoaNV.Click += new System.EventHandler(this.btnXoaNV_Click);
             // 
             // btnThemNV
             // 
@@ -761,6 +766,7 @@
             this.btnThemNV.TabIndex = 17;
             this.btnThemNV.Text = "Thêm";
             this.btnThemNV.UseVisualStyleBackColor = false;
+            this.btnThemNV.Click += new System.EventHandler(this.btnThemNV_Click);
             // 
             // dgvNhanVien
             // 
@@ -778,6 +784,7 @@
             this.dgvNhanVien.Name = "dgvNhanVien";
             this.dgvNhanVien.Size = new System.Drawing.Size(1034, 255);
             this.dgvNhanVien.TabIndex = 0;
+            this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellClick);
             // 
             // Column1
             // 
@@ -994,11 +1001,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1052, 582);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormAdmin";
             this.Text = "FormAdmin";
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -1038,7 +1045,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
