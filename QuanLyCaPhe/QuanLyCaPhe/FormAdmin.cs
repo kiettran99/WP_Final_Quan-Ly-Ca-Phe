@@ -22,6 +22,7 @@ namespace QuanLyCaPhe
 
         }
 
+        #region TabNhanVien
         private void btnThoat_Click(object sender, EventArgs e)
         {
 
@@ -43,6 +44,12 @@ namespace QuanLyCaPhe
         }
 
         private void btnSua_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        private void btnThemTK_Click(object sender, EventArgs e)
         {
 
         }

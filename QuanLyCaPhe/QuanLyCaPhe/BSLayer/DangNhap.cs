@@ -16,18 +16,24 @@ namespace QuanLyCaPhe.BSLayer
             dbMain = new DBMain();
         }
 
-        public bool KiemTra(string tk,string mk,ref string err)
+        public bool KiemTra(string tk,string mk,ref string err,ref string MaNV)
         {            
-                string sqlstring = "Select Count(*) From DangNhap Where TaiKhoan='" + tk + "'";
+                string sqlstring = "Select Count(*) From DangNhap Where TaiKhoan = '" + tk + "'";
             if (dbMain.CheckThongTin(sqlstring, CommandType.Text, ref err) == false)
             {
                 err = "Thất Bại";
                 return false;
             }
             else
+            {
                 err = "Thành Công";
+                sqlstring = "Select MaNV From DangNhap where TaiKhoan='" + tk + "'";
+                dbMain.LayMa(sqlstring, CommandType.Text,ref  MaNV);
+
+            }
+
             return true;
         }
-
+       
     }
 }

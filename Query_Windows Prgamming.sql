@@ -31,7 +31,8 @@ create table NhanVien(
 
 create table DangNhap(
 	TaiKhoan varchar(20),
-	MatKhau varchar(20)
+	MatKhau varchar(20),
+	MaNV varchar(20),
 	primary key(TaiKhoan)
 )
 
@@ -47,4 +48,5 @@ delete from ThanhPho
 delete from DangNhap
 
 insert into KhachHang values('KH1', 'Nguyen Xuan', 'Huy', 'Nam', '1997-12-05', '0904567841', '92 Hai Ba Trung Ho Chi Minh')
-
+Select MaNV From DangNhap where TaiKhoan='admin';
+Select TaiKhoan From DangNhap where MaNV = '1';
