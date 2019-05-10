@@ -14,8 +14,8 @@ namespace QuanLyCaPhe.DBLayer
         SqlCommand cmd = null;
         SqlDataAdapter dt = null;
 
-        // string strConnection = "Data Source=DESKTOP-9O7TSTT\\SQLEXPRESS;" + "Initial Catalog=QuanLyCaPhe;" + "Integrated Security=True";
-        string strConnection = "Data Source=./;" + "Initial Catalog=QuanLyCaPhe;" + "Integrated Security=True";
+        string strConnection = "Data Source=DESKTOP-9O7TSTT\\SQLEXPRESS;" + "Initial Catalog=QuanLyCaPhe;" + "Integrated Security=True";
+        //string strConnection = "Data Source=./;" + "Initial Catalog=QuanLyCaPhe;" + "Integrated Security=True";
         public DBMain()
         {
             conn = new SqlConnection(strConnection);
@@ -112,13 +112,14 @@ namespace QuanLyCaPhe.DBLayer
         public bool CheckThongTin(string strSQL, CommandType ct, ref string error)
         {
             bool f = false;
-
+            
             try
             {
                 if (conn.State == ConnectionState.Open)
                     conn.Close();
                 conn.Open();
-
+               
+              
                 cmd.CommandText = strSQL;
                 cmd.CommandType = ct;
                 int k = Int32.Parse(cmd.ExecuteScalar().ToString());
@@ -135,5 +136,30 @@ namespace QuanLyCaPhe.DBLayer
             }
             return f;
         }
+        public void LayMa(string strSQL,CommandType ct,ref string MaNV)
+        {
+            
+            try
+            {
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+                conn.Open();
+
+                cmd.CommandText = strSQL;
+                cmd.CommandType = ct;
+                MaNV = (String)cmd.ExecuteScalar().ToString();                
+            }
+            catch (SqlException )
+            {
+               
+            }
+            finally
+            {
+                conn.Close();
+            }           
+
+        }
+     
+
     }
 }

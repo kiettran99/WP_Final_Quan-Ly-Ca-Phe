@@ -21,21 +21,6 @@ namespace QuanLyCaPhe.BSLayer
         {
             return dbMain.ExecuteQueryDataSet("select *from NhanVien", CommandType.Text);
         }
-        public bool ThemNhanVien(string MaNV, string Ho, string TenNV, bool Nu, DateTime NgayNV, DateTime NgaySinh, string DiaChi, string SDT, ref string error)
-        {
-            string sqlString;
-            try
-            {
-                 sqlString = "Insert Into NhanVien Values(" + "'" + MaNV + "',N'" + Ho + "',N'" + TenNV + "',N'" + Nu + "',N'" + NgaySinh + "',N'" + SDT + "',N'" + DiaChi + "',N'" + NgayNV + "')";
-            }
-            catch (Exception)
-            {
-                error = "Thêm Không được";
-                return false;
-            }
-            error = "Thêm thành công";
-            return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
-        }
         public bool SuaNhanVien(string MaNV, string Ho, string TenNV, bool Nu, DateTime NgayNV, DateTime NgaySinh, string DiaChi, string SDT, ref string error)
         {
             string sqlString;
@@ -53,22 +38,14 @@ namespace QuanLyCaPhe.BSLayer
             error = "Sửa thành công";
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
-        public bool Xoa(ref string error, string MaNV)
+        public void LayTKMK(string MaNV,ref string TK,ref string MK)
         {
             string sqlString;
-            try
-            {
-                sqlString = "Delete From NhanVien Where MaNV='" + MaNV + "'";
-            }
-            catch (Exception)
-            {
-                error = "Xóa không được";
-                return false;
-            }
-            error = "Xóa thành công";
-            return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
+            sqlString = "Select TaiKhoan From DangNhap where MaNV = N'" + MaNV + "'";
+            dbMain.LayMa(sqlString, CommandType.Text, ref TK);
+            sqlString = "Select MatKhau From DangNhap where MaNV=N'" + MaNV + "'";
+            dbMain.LayMa(sqlString, CommandType.Text,ref MK);
         }
-
 
 
 
