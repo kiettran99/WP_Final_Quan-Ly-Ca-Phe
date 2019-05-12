@@ -18,7 +18,7 @@ namespace QuanLyCaPhe
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            Application.Run(new FormManHinhChinh());
+            Application.Run(new FormAdmin());
         }
     }
 }

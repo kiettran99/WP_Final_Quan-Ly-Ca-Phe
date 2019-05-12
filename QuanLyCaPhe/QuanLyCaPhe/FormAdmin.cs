@@ -31,8 +31,16 @@ namespace QuanLyCaPhe
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Chọn tab nhân viên, sẽ load dữ liệu lên.
-            if (tabControl.SelectedIndex == 5)
-                LoadDataNV();
+            switch (tabControl.SelectedIndex)
+            {
+                case 1:
+                    LoadDataF();
+
+                    break;
+                case 5:
+                    LoadDataNV();
+                    break;
+            }
         }
 
         #region TabNhanVien
@@ -91,16 +99,17 @@ namespace QuanLyCaPhe
             txtFID.ResetText();
             txtFName.ResetText();
             txtSFname.ResetText();
-            nudGiaF.ResetText();
-           
+            txtGiaF.ResetText();
+
             // không cho thao tác trên các nút lưu/hủy
-           btnHuyF.Enabled = false;
+            btnHuyF.Enabled = false;
             btnLuuF.Enabled = false;
 
-          
-          btnThemF.Enabled = true;
-           btnXoaF.Enabled = true;
+
+            btnThemF.Enabled = true;
+            btnXoaF.Enabled = true;
             btnSuaF.Enabled = true;
+            dgvThucAn_CellClick(null, null);
         }
 
 
@@ -215,12 +224,12 @@ namespace QuanLyCaPhe
 
         private void btnReLoad_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -228,6 +237,12 @@ namespace QuanLyCaPhe
 
         }
 
+
+
+
+
+
+        #region tabthucan
         private void btnThemF_Click(object sender, EventArgs e)
         {
             btnThemF.Enabled = false;
@@ -242,9 +257,9 @@ namespace QuanLyCaPhe
             txtFName.ResetText();
             txtSFname.ResetText();
             cmbDanhMucF.ResetText();
-            nudGiaF.ResetText();
+           txtGiaF.ResetText();
             Random rd = new Random();
-            txtFID.Text= rd.Next(0, 10000).ToString();
+            txtFID.Text = rd.Next(0, 10000).ToString();
 
         }
 
@@ -253,16 +268,17 @@ namespace QuanLyCaPhe
             try
             {
                 int r = dgvThucAn.CurrentCell.RowIndex;
-                txtFID.Text = dgvNhanVien.Rows[r].Cells[0].Value.ToString();
+                txtFID.Text = dgvThucAn.Rows[r].Cells[0].Value.ToString();
                 txtFName.Text = dgvThucAn.Rows[r].Cells[1].Value.ToString();
                 cmbDanhMucF.Text = dgvThucAn.Rows[r].Cells[2].Value.ToString();
-                nudGiaF.Value = (decimal)dgvThucAn.Rows[r].Cells[3].Value;
+                txtGiaF.Text = dgvThucAn.Rows[r].Cells[3].Value.ToString();
             }
             catch
             {
 
             }
         }
+
 
         private void btnHuyF_Click(object sender, EventArgs e)
         {
@@ -282,7 +298,7 @@ namespace QuanLyCaPhe
                 DialogResult dr = MessageBox.Show("Bạn có muốn xóa ?", "Thông báo", MessageBoxButtons.OKCancel);
                 if (dr == DialogResult.OK)
                 {
-                  BLTA.XoaThucAn(txtFID.Text, ref err);
+                    BLTA.XoaThucAn(txtFID.Text, ref err);
                     LoadDataF();
                 }
             }
@@ -291,23 +307,21 @@ namespace QuanLyCaPhe
                 MessageBox.Show(err.Message);
             }
         }
-
         private void btnLuuF_Click(object sender, EventArgs e)
         {
-            BLTA.ThemThucAn(txtFID.Text, txtFName.Text.Trim(), nudGiaF.ToString(),
+            BLTA.ThemThucAn(txtFID.Text, txtFName.Text.Trim(),txtGiaF.Text.Trim(),
                cmbDanhMucF.Text.Trim(), ref err);
             // Load lại DataGridView
             LoadDataNV();
             // THông Báo
             MessageBox.Show(err);
         }
-
         private void btnSuaF_Click(object sender, EventArgs e)
         {
             txtFID.ResetText();
             txtFName.ResetText();
             cmbDanhMucF.ResetText();
-            nudGiaF.ResetText();
+            txtGiaF.ResetText();
             btnSuaF.Enabled = false;
             btnXoaF.Enabled = false;
             btnLuuF.Enabled = true;
@@ -316,9 +330,15 @@ namespace QuanLyCaPhe
             dgvThucAn_CellClick(null, null);
         }
 
+
         private void btnXemF_Click(object sender, EventArgs e)
         {
             LoadDataF();
+        }
+        #endregion
+        private void txtFName_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void btnSua_Click(object sender, EventArgs e)

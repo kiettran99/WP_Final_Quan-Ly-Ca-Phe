@@ -43,7 +43,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.nudGiaF = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.cmbDanhMucF = new System.Windows.Forms.ComboBox();
@@ -57,6 +56,11 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.dgvThucAn = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnHuyF = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnLuuF = new System.Windows.Forms.Button();
             this.btnXemF = new System.Windows.Forms.Button();
             this.btnSuaF = new System.Windows.Forms.Button();
             this.btnXoaF = new System.Windows.Forms.Button();
@@ -110,11 +114,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.btnLuuF = new System.Windows.Forms.Button();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnHuyF = new System.Windows.Forms.Button();
+            this.MaThucAn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenMonAn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtGiaF = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -125,13 +129,13 @@
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGiaF)).BeginInit();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThucAn)).BeginInit();
             this.panel4.SuspendLayout();
+            this.panel16.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTK)).BeginInit();
@@ -141,7 +145,6 @@
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.gbChiTiet.SuspendLayout();
-            this.panel16.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -154,7 +157,7 @@
             this.tabControl.Controls.Add(this.tabPage6);
             this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl.Location = new System.Drawing.Point(0, 2);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(935, 466);
@@ -168,9 +171,9 @@
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(927, 428);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Danh Thu";
@@ -182,7 +185,7 @@
             this.panel2.Controls.Add(this.dateTimePicker2);
             this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Location = new System.Drawing.Point(3, 4);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(925, 37);
             this.panel2.TabIndex = 1;
@@ -192,7 +195,7 @@
             this.btnThongKe.BackColor = System.Drawing.Color.Yellow;
             this.btnThongKe.Font = new System.Drawing.Font("Monotype Corsiva", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThongKe.Location = new System.Drawing.Point(381, 5);
-            this.btnThongKe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThongKe.Margin = new System.Windows.Forms.Padding(4);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Size = new System.Drawing.Size(136, 30);
             this.btnThongKe.TabIndex = 2;
@@ -206,7 +209,7 @@
             this.dateTimePicker2.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker2.Location = new System.Drawing.Point(690, 4);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(230, 30);
             this.dateTimePicker2.TabIndex = 1;
@@ -216,7 +219,7 @@
             this.dateTimePicker1.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(3, 4);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(230, 30);
             this.dateTimePicker1.TabIndex = 0;
@@ -225,7 +228,7 @@
             // 
             this.panel1.Controls.Add(this.dgvDanhThu);
             this.panel1.Location = new System.Drawing.Point(4, 46);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(925, 380);
             this.panel1.TabIndex = 0;
@@ -234,7 +237,7 @@
             // 
             this.dgvDanhThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhThu.Location = new System.Drawing.Point(2, 2);
-            this.dgvDanhThu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvDanhThu.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDanhThu.Name = "dgvDanhThu";
             this.dgvDanhThu.Size = new System.Drawing.Size(921, 372);
             this.dgvDanhThu.TabIndex = 0;
@@ -243,9 +246,9 @@
             // 
             this.tabPage2.Controls.Add(this.panel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(927, 428);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Thức Ăn";
@@ -258,7 +261,7 @@
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Location = new System.Drawing.Point(2, 2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(928, 423);
             this.panel3.TabIndex = 0;
@@ -269,7 +272,7 @@
             this.panel7.Controls.Add(this.txtSFname);
             this.panel7.Controls.Add(this.button1);
             this.panel7.Location = new System.Drawing.Point(555, 4);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(370, 50);
             this.panel7.TabIndex = 3;
@@ -277,7 +280,7 @@
             // txtSFname
             // 
             this.txtSFname.Location = new System.Drawing.Point(186, 4);
-            this.txtSFname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSFname.Margin = new System.Windows.Forms.Padding(4);
             this.txtSFname.Name = "txtSFname";
             this.txtSFname.Size = new System.Drawing.Size(164, 30);
             this.txtSFname.TabIndex = 5;
@@ -286,7 +289,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.Location = new System.Drawing.Point(71, -2);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(76, 50);
             this.button1.TabIndex = 4;
@@ -301,29 +304,20 @@
             this.panel6.Controls.Add(this.panel9);
             this.panel6.Controls.Add(this.panel8);
             this.panel6.Location = new System.Drawing.Point(464, 58);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(466, 368);
             this.panel6.TabIndex = 2;
             // 
             // panel11
             // 
-            this.panel11.Controls.Add(this.nudGiaF);
+            this.panel11.Controls.Add(this.txtGiaF);
             this.panel11.Controls.Add(this.label3);
             this.panel11.Location = new System.Drawing.Point(8, 188);
-            this.panel11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel11.Margin = new System.Windows.Forms.Padding(4);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(456, 48);
             this.panel11.TabIndex = 4;
-            // 
-            // nudGiaF
-            // 
-            this.nudGiaF.Location = new System.Drawing.Point(163, 7);
-            this.nudGiaF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.nudGiaF.Name = "nudGiaF";
-            this.nudGiaF.Size = new System.Drawing.Size(276, 30);
-            this.nudGiaF.TabIndex = 1;
-            this.nudGiaF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -341,7 +335,7 @@
             this.panel10.Controls.Add(this.cmbDanhMucF);
             this.panel10.Controls.Add(this.label2);
             this.panel10.Location = new System.Drawing.Point(9, 138);
-            this.panel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel10.Margin = new System.Windows.Forms.Padding(4);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(456, 48);
             this.panel10.TabIndex = 3;
@@ -350,7 +344,7 @@
             // 
             this.cmbDanhMucF.FormattingEnabled = true;
             this.cmbDanhMucF.Location = new System.Drawing.Point(162, 9);
-            this.cmbDanhMucF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDanhMucF.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDanhMucF.Name = "cmbDanhMucF";
             this.cmbDanhMucF.Size = new System.Drawing.Size(274, 33);
             this.cmbDanhMucF.TabIndex = 1;
@@ -371,7 +365,7 @@
             this.panel9.Controls.Add(this.txtFName);
             this.panel9.Controls.Add(this.label1);
             this.panel9.Location = new System.Drawing.Point(1, 83);
-            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(456, 48);
             this.panel9.TabIndex = 2;
@@ -379,10 +373,11 @@
             // txtFName
             // 
             this.txtFName.Location = new System.Drawing.Point(178, 8);
-            this.txtFName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(275, 30);
             this.txtFName.TabIndex = 1;
+            this.txtFName.TextChanged += new System.EventHandler(this.txtFName_TextChanged);
             // 
             // label1
             // 
@@ -400,7 +395,7 @@
             this.panel8.Controls.Add(this.txtFID);
             this.panel8.Controls.Add(this.label10);
             this.panel8.Location = new System.Drawing.Point(8, 35);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(458, 48);
             this.panel8.TabIndex = 1;
@@ -408,7 +403,7 @@
             // txtFID
             // 
             this.txtFID.Location = new System.Drawing.Point(119, 1);
-            this.txtFID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFID.Margin = new System.Windows.Forms.Padding(4);
             this.txtFID.Name = "txtFID";
             this.txtFID.ReadOnly = true;
             this.txtFID.Size = new System.Drawing.Size(275, 30);
@@ -429,7 +424,7 @@
             // 
             this.panel5.Controls.Add(this.dgvThucAn);
             this.panel5.Location = new System.Drawing.Point(3, 57);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(466, 366);
             this.panel5.TabIndex = 1;
@@ -438,8 +433,13 @@
             // 
             this.dgvThucAn.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.dgvThucAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvThucAn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaThucAn,
+            this.TenMonAn,
+            this.Column9,
+            this.Gia});
             this.dgvThucAn.Location = new System.Drawing.Point(3, 4);
-            this.dgvThucAn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvThucAn.Margin = new System.Windows.Forms.Padding(4);
             this.dgvThucAn.Name = "dgvThucAn";
             this.dgvThucAn.Size = new System.Drawing.Size(461, 361);
             this.dgvThucAn.TabIndex = 0;
@@ -455,16 +455,71 @@
             this.panel4.Controls.Add(this.btnXoaF);
             this.panel4.Controls.Add(this.btnThemF);
             this.panel4.Location = new System.Drawing.Point(2, 4);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(557, 50);
             this.panel4.TabIndex = 0;
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.Color.Yellow;
+            this.panel16.Controls.Add(this.textBox1);
+            this.panel16.Controls.Add(this.btnHuyF);
+            this.panel16.Controls.Add(this.button2);
+            this.panel16.Location = new System.Drawing.Point(462, -4);
+            this.panel16.Margin = new System.Windows.Forms.Padding(4);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(461, 50);
+            this.panel16.TabIndex = 3;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(277, 8);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(164, 30);
+            this.textBox1.TabIndex = 5;
+            // 
+            // btnHuyF
+            // 
+            this.btnHuyF.BackColor = System.Drawing.Color.Cyan;
+            this.btnHuyF.Location = new System.Drawing.Point(13, 4);
+            this.btnHuyF.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHuyF.Name = "btnHuyF";
+            this.btnHuyF.Size = new System.Drawing.Size(76, 50);
+            this.btnHuyF.TabIndex = 3;
+            this.btnHuyF.Text = "Hủy";
+            this.btnHuyF.UseVisualStyleBackColor = false;
+            this.btnHuyF.Click += new System.EventHandler(this.btnHuyF_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Red;
+            this.button2.Location = new System.Drawing.Point(162, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(76, 50);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Tìm";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // btnLuuF
+            // 
+            this.btnLuuF.BackColor = System.Drawing.Color.Cyan;
+            this.btnLuuF.Location = new System.Drawing.Point(388, 0);
+            this.btnLuuF.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLuuF.Name = "btnLuuF";
+            this.btnLuuF.Size = new System.Drawing.Size(76, 50);
+            this.btnLuuF.TabIndex = 3;
+            this.btnLuuF.Text = "Lưu";
+            this.btnLuuF.UseVisualStyleBackColor = false;
+            this.btnLuuF.Click += new System.EventHandler(this.btnLuuF_Click);
             // 
             // btnXemF
             // 
             this.btnXemF.BackColor = System.Drawing.Color.Cyan;
             this.btnXemF.Location = new System.Drawing.Point(296, -1);
-            this.btnXemF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXemF.Margin = new System.Windows.Forms.Padding(4);
             this.btnXemF.Name = "btnXemF";
             this.btnXemF.Size = new System.Drawing.Size(76, 50);
             this.btnXemF.TabIndex = 3;
@@ -476,7 +531,7 @@
             // 
             this.btnSuaF.BackColor = System.Drawing.Color.Red;
             this.btnSuaF.Location = new System.Drawing.Point(200, 2);
-            this.btnSuaF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSuaF.Margin = new System.Windows.Forms.Padding(4);
             this.btnSuaF.Name = "btnSuaF";
             this.btnSuaF.Size = new System.Drawing.Size(76, 50);
             this.btnSuaF.TabIndex = 2;
@@ -488,7 +543,7 @@
             // 
             this.btnXoaF.BackColor = System.Drawing.Color.Red;
             this.btnXoaF.Location = new System.Drawing.Point(102, 0);
-            this.btnXoaF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXoaF.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoaF.Name = "btnXoaF";
             this.btnXoaF.Size = new System.Drawing.Size(76, 50);
             this.btnXoaF.TabIndex = 1;
@@ -500,7 +555,7 @@
             // 
             this.btnThemF.BackColor = System.Drawing.Color.Red;
             this.btnThemF.Location = new System.Drawing.Point(3, 0);
-            this.btnThemF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThemF.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemF.Name = "btnThemF";
             this.btnThemF.Size = new System.Drawing.Size(76, 50);
             this.btnThemF.TabIndex = 0;
@@ -511,9 +566,9 @@
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage3.Size = new System.Drawing.Size(927, 428);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Danh Mục";
@@ -522,9 +577,9 @@
             // tabPage4
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 34);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage4.Size = new System.Drawing.Size(927, 428);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Bàn Ăn";
@@ -537,9 +592,9 @@
             this.tabPage5.Controls.Add(this.panel14);
             this.tabPage5.Controls.Add(this.panel13);
             this.tabPage5.Location = new System.Drawing.Point(4, 34);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage5.Size = new System.Drawing.Size(927, 428);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Tài Khoản";
@@ -549,7 +604,7 @@
             // 
             this.panel12.Controls.Add(this.dgvTK);
             this.panel12.Location = new System.Drawing.Point(7, 62);
-            this.panel12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel12.Margin = new System.Windows.Forms.Padding(4);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(919, 297);
             this.panel12.TabIndex = 4;
@@ -558,7 +613,7 @@
             // 
             this.dgvTK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTK.Location = new System.Drawing.Point(-2, 2);
-            this.dgvTK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvTK.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTK.Name = "dgvTK";
             this.dgvTK.Size = new System.Drawing.Size(919, 294);
             this.dgvTK.TabIndex = 0;
@@ -569,7 +624,7 @@
             this.panel15.Controls.Add(this.txtMauKhauTK);
             this.panel15.Controls.Add(this.label5);
             this.panel15.Location = new System.Drawing.Point(459, 4);
-            this.panel15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel15.Margin = new System.Windows.Forms.Padding(4);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(468, 54);
             this.panel15.TabIndex = 3;
@@ -577,7 +632,7 @@
             // txtMauKhauTK
             // 
             this.txtMauKhauTK.Location = new System.Drawing.Point(192, 11);
-            this.txtMauKhauTK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMauKhauTK.Margin = new System.Windows.Forms.Padding(4);
             this.txtMauKhauTK.Name = "txtMauKhauTK";
             this.txtMauKhauTK.Size = new System.Drawing.Size(253, 30);
             this.txtMauKhauTK.TabIndex = 1;
@@ -602,7 +657,7 @@
             this.panel14.Controls.Add(this.btnXoaTK);
             this.panel14.Controls.Add(this.btnThemTK);
             this.panel14.Location = new System.Drawing.Point(5, 358);
-            this.panel14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel14.Margin = new System.Windows.Forms.Padding(4);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(915, 69);
             this.panel14.TabIndex = 2;
@@ -611,7 +666,7 @@
             // 
             this.btnReloadTK.BackColor = System.Drawing.Color.Cyan;
             this.btnReloadTK.Location = new System.Drawing.Point(728, 2);
-            this.btnReloadTK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReloadTK.Margin = new System.Windows.Forms.Padding(4);
             this.btnReloadTK.Name = "btnReloadTK";
             this.btnReloadTK.Size = new System.Drawing.Size(114, 64);
             this.btnReloadTK.TabIndex = 5;
@@ -622,7 +677,7 @@
             // 
             this.btnReNewTK.BackColor = System.Drawing.Color.Cyan;
             this.btnReNewTK.Location = new System.Drawing.Point(606, 2);
-            this.btnReNewTK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReNewTK.Margin = new System.Windows.Forms.Padding(4);
             this.btnReNewTK.Name = "btnReNewTK";
             this.btnReNewTK.Size = new System.Drawing.Size(114, 64);
             this.btnReNewTK.TabIndex = 4;
@@ -633,7 +688,7 @@
             // 
             this.btnHuyTK.BackColor = System.Drawing.Color.Silver;
             this.btnHuyTK.Location = new System.Drawing.Point(405, 2);
-            this.btnHuyTK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHuyTK.Margin = new System.Windows.Forms.Padding(4);
             this.btnHuyTK.Name = "btnHuyTK";
             this.btnHuyTK.Size = new System.Drawing.Size(114, 64);
             this.btnHuyTK.TabIndex = 3;
@@ -644,7 +699,7 @@
             // 
             this.btnLuuTK.BackColor = System.Drawing.Color.Silver;
             this.btnLuuTK.Location = new System.Drawing.Point(290, 4);
-            this.btnLuuTK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLuuTK.Margin = new System.Windows.Forms.Padding(4);
             this.btnLuuTK.Name = "btnLuuTK";
             this.btnLuuTK.Size = new System.Drawing.Size(114, 64);
             this.btnLuuTK.TabIndex = 2;
@@ -655,7 +710,7 @@
             // 
             this.btnXoaTK.BackColor = System.Drawing.Color.Lime;
             this.btnXoaTK.Location = new System.Drawing.Point(117, 4);
-            this.btnXoaTK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXoaTK.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoaTK.Name = "btnXoaTK";
             this.btnXoaTK.Size = new System.Drawing.Size(114, 64);
             this.btnXoaTK.TabIndex = 1;
@@ -666,7 +721,7 @@
             // 
             this.btnThemTK.BackColor = System.Drawing.Color.Lime;
             this.btnThemTK.Location = new System.Drawing.Point(0, 4);
-            this.btnThemTK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThemTK.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemTK.Name = "btnThemTK";
             this.btnThemTK.Size = new System.Drawing.Size(114, 64);
             this.btnThemTK.TabIndex = 0;
@@ -680,7 +735,7 @@
             this.panel13.Controls.Add(this.txtTenTK);
             this.panel13.Controls.Add(this.label4);
             this.panel13.Location = new System.Drawing.Point(5, 4);
-            this.panel13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel13.Margin = new System.Windows.Forms.Padding(4);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(453, 54);
             this.panel13.TabIndex = 1;
@@ -688,7 +743,7 @@
             // txtTenTK
             // 
             this.txtTenTK.Location = new System.Drawing.Point(192, 11);
-            this.txtTenTK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTenTK.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenTK.Name = "txtTenTK";
             this.txtTenTK.Size = new System.Drawing.Size(253, 30);
             this.txtTenTK.TabIndex = 1;
@@ -713,9 +768,9 @@
             this.tabPage6.Controls.Add(this.dgvNhanVien);
             this.tabPage6.Controls.Add(this.gbChiTiet);
             this.tabPage6.Location = new System.Drawing.Point(4, 34);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage6.Size = new System.Drawing.Size(927, 428);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Nhân Viên";
@@ -914,7 +969,7 @@
             // 
             this.rdbNu.AutoSize = true;
             this.rdbNu.Location = new System.Drawing.Point(308, 42);
-            this.rdbNu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbNu.Margin = new System.Windows.Forms.Padding(4);
             this.rdbNu.Name = "rdbNu";
             this.rdbNu.Size = new System.Drawing.Size(53, 24);
             this.rdbNu.TabIndex = 13;
@@ -941,7 +996,7 @@
             // txtTenNV
             // 
             this.txtTenNV.Location = new System.Drawing.Point(121, 146);
-            this.txtTenNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTenNV.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenNV.Name = "txtTenNV";
             this.txtTenNV.Size = new System.Drawing.Size(152, 26);
             this.txtTenNV.TabIndex = 10;
@@ -949,7 +1004,7 @@
             // txtHoNV
             // 
             this.txtHoNV.Location = new System.Drawing.Point(121, 91);
-            this.txtHoNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtHoNV.Margin = new System.Windows.Forms.Padding(4);
             this.txtHoNV.Name = "txtHoNV";
             this.txtHoNV.Size = new System.Drawing.Size(152, 26);
             this.txtHoNV.TabIndex = 9;
@@ -957,7 +1012,7 @@
             // txtMaNV
             // 
             this.txtMaNV.Location = new System.Drawing.Point(181, 46);
-            this.txtMaNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaNV.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaNV.Name = "txtMaNV";
             this.txtMaNV.Size = new System.Drawing.Size(92, 26);
             this.txtMaNV.TabIndex = 8;
@@ -1021,60 +1076,38 @@
             this.label14.TabIndex = 2;
             this.label14.Text = "Mã Nhân Viên :";
             // 
-            // btnLuuF
+            // MaThucAn
             // 
-            this.btnLuuF.BackColor = System.Drawing.Color.Cyan;
-            this.btnLuuF.Location = new System.Drawing.Point(388, 0);
-            this.btnLuuF.Margin = new System.Windows.Forms.Padding(4);
-            this.btnLuuF.Name = "btnLuuF";
-            this.btnLuuF.Size = new System.Drawing.Size(76, 50);
-            this.btnLuuF.TabIndex = 3;
-            this.btnLuuF.Text = "Lưu";
-            this.btnLuuF.UseVisualStyleBackColor = false;
-            this.btnLuuF.Click += new System.EventHandler(this.btnLuuF_Click);
+            this.MaThucAn.DataPropertyName = "IDThucAn";
+            this.MaThucAn.HeaderText = "Mã Thức Ăn";
+            this.MaThucAn.Name = "MaThucAn";
             // 
-            // panel16
+            // TenMonAn
             // 
-            this.panel16.BackColor = System.Drawing.Color.Yellow;
-            this.panel16.Controls.Add(this.textBox1);
-            this.panel16.Controls.Add(this.btnHuyF);
-            this.panel16.Controls.Add(this.button2);
-            this.panel16.Location = new System.Drawing.Point(462, -4);
-            this.panel16.Margin = new System.Windows.Forms.Padding(4);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(461, 50);
-            this.panel16.TabIndex = 3;
+            this.TenMonAn.DataPropertyName = "TenThucAn";
+            this.TenMonAn.HeaderText = "Tên Món Ăn";
+            this.TenMonAn.Name = "TenMonAn";
             // 
-            // textBox1
+            // Column9
             // 
-            this.textBox1.Location = new System.Drawing.Point(277, 8);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(164, 30);
-            this.textBox1.TabIndex = 5;
+            this.Column9.DataPropertyName = "IDLoaiThucAn";
+            this.Column9.HeaderText = "Loại Món Ăn";
+            this.Column9.Name = "Column9";
             // 
-            // button2
+            // Gia
             // 
-            this.button2.BackColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(162, 2);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(76, 50);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Tìm";
-            this.button2.UseVisualStyleBackColor = false;
+            this.Gia.DataPropertyName = "Gia";
+            this.Gia.HeaderText = "Giá";
+            this.Gia.Name = "Gia";
             // 
-            // btnHuyF
+            // txtGiaF
             // 
-            this.btnHuyF.BackColor = System.Drawing.Color.Cyan;
-            this.btnHuyF.Location = new System.Drawing.Point(13, 4);
-            this.btnHuyF.Margin = new System.Windows.Forms.Padding(4);
-            this.btnHuyF.Name = "btnHuyF";
-            this.btnHuyF.Size = new System.Drawing.Size(76, 50);
-            this.btnHuyF.TabIndex = 3;
-            this.btnHuyF.Text = "Hủy";
-            this.btnHuyF.UseVisualStyleBackColor = false;
-            this.btnHuyF.Click += new System.EventHandler(this.btnHuyF_Click);
+            this.txtGiaF.Location = new System.Drawing.Point(162, 9);
+            this.txtGiaF.Margin = new System.Windows.Forms.Padding(4);
+            this.txtGiaF.Name = "txtGiaF";
+            this.txtGiaF.Size = new System.Drawing.Size(275, 30);
+            this.txtGiaF.TabIndex = 1;
+            this.txtGiaF.TextChanged += new System.EventHandler(this.txtFName_TextChanged);
             // 
             // FormAdmin
             // 
@@ -1082,7 +1115,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 466);
             this.Controls.Add(this.tabControl);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormAdmin";
             this.Text = "FormAdmin";
             this.tabControl.ResumeLayout(false);
@@ -1097,7 +1130,6 @@
             this.panel6.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudGiaF)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel9.ResumeLayout(false);
@@ -1107,6 +1139,8 @@
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvThucAn)).EndInit();
             this.panel4.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTK)).EndInit();
@@ -1119,8 +1153,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).EndInit();
             this.gbChiTiet.ResumeLayout(false);
             this.gbChiTiet.PerformLayout();
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1159,7 +1191,6 @@
         private System.Windows.Forms.TextBox txtFID;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.NumericUpDown nudGiaF;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.ComboBox cmbDanhMucF;
@@ -1214,5 +1245,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnHuyF;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaThucAn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenMonAn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
+        private System.Windows.Forms.TextBox txtGiaF;
     }
 }
