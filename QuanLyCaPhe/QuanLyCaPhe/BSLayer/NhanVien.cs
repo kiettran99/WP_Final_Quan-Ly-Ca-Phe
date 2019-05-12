@@ -68,6 +68,5 @@ namespace QuanLyCaPhe.BSLayer
             string sqlString = $"delete from NhanVien where MaNV = '{MaNV}'";
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
-
     }
 }
