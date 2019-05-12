@@ -110,6 +110,10 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.IDThucAn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenThucAn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoaiThucAn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -432,6 +436,11 @@
             // 
             this.dgvThucAn.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.dgvThucAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvThucAn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDThucAn,
+            this.TenThucAn,
+            this.LoaiThucAn,
+            this.Gia});
             this.dgvThucAn.Location = new System.Drawing.Point(3, 5);
             this.dgvThucAn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvThucAn.Name = "dgvThucAn";
@@ -996,6 +1005,30 @@
             this.label14.TabIndex = 2;
             this.label14.Text = "Mã Nhân Viên :";
             // 
+            // IDThucAn
+            // 
+            this.IDThucAn.DataPropertyName = "IDThucAn";
+            this.IDThucAn.HeaderText = "Mã Thức Ăn";
+            this.IDThucAn.Name = "IDThucAn";
+            // 
+            // TenThucAn
+            // 
+            this.TenThucAn.DataPropertyName = "TenThucAn";
+            this.TenThucAn.HeaderText = "Tên Thức Ăn";
+            this.TenThucAn.Name = "TenThucAn";
+            // 
+            // LoaiThucAn
+            // 
+            this.LoaiThucAn.DataPropertyName = "LoaiThucAn";
+            this.LoaiThucAn.HeaderText = "Loại Thức Ăn";
+            this.LoaiThucAn.Name = "LoaiThucAn";
+            // 
+            // Gia
+            // 
+            this.Gia.DataPropertyName = "Gia";
+            this.Gia.HeaderText = "Giá";
+            this.Gia.Name = "Gia";
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1127,5 +1160,9 @@
         private System.Windows.Forms.Button btnLuuNV;
         private System.Windows.Forms.Button btnXoaNV;
         private System.Windows.Forms.Button btnThemNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDThucAn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenThucAn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoaiThucAn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
     }
 }

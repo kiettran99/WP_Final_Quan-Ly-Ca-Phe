@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BSLayer\BanAn.cs" />
     <Compile Include="BSLayer\DangNhap.cs" />
     <Compile Include="BSLayer\KhachHang.cs" />
     <Compile Include="BSLayer\NhanVien.cs" />

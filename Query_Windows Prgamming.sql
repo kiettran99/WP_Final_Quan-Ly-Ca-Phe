@@ -95,3 +95,16 @@ delete from DangNhap
 insert into KhachHang values('KH1', 'Nguyen Xuan', 'Huy', 'Nam', '1997-12-05', '0904567841', '92 Hai Ba Trung Ho Chi Minh')
 Select MaNV From DangNhap where TaiKhoan='admin';
 Select TaiKhoan From DangNhap where MaNV = '1';
+
+delete from BanAn
+
+declare @i int = 0
+
+while @i <= 20
+begin
+	insert into BanAn(IDBanAn, TenBan) 
+	values(cast(@i as nvarchar(100)) , N'Bàn' + cast(@i as nvarchar(100)))
+	set @i = @i + 1
+end
+
+select * from BanAn
