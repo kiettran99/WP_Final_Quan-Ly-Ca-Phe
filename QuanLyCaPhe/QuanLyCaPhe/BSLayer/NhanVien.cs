@@ -26,11 +26,11 @@ namespace QuanLyCaPhe.BSLayer
             string sqlString;
             try
             {
-                    sqlString = "Update NhanVien Set HoNV=N'" + Ho + "',TenNV=N'" + TenNV +
-                    "',Nu='" + Nu + "',NgayBD='" + NgayNV + "',NgaySinh='" + NgaySinh +
-                    "',DiaChi=N'" + DiaChi + "',SDT='" + SDT + "' Where MaNV= '" + MaNV + "'";
+                sqlString = "Update NhanVien Set HoNV=N'" + Ho + "',TenNV=N'" + TenNV +
+                "',Nu='" + Nu + "',NgayBD='" + NgayNV + "',NgaySinh='" + NgaySinh +
+                "',DiaChi=N'" + DiaChi + "',SDT='" + SDT + "' Where MaNV= '" + MaNV + "'";
             }
-            catch(SqlException)
+            catch (SqlException)
             {
                 error = "Sửa không được";
                 return false;
@@ -38,13 +38,13 @@ namespace QuanLyCaPhe.BSLayer
             error = "Sửa thành công";
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
-        public void LayTKMK(string MaNV,ref string TK,ref string MK)
+        public void LayTKMK(string MaNV, ref string TK, ref string MK)
         {
             string sqlString;
             sqlString = "Select TaiKhoan From DangNhap where MaNV = N'" + MaNV + "'";
             dbMain.LayMa(sqlString, CommandType.Text, ref TK);
             sqlString = "Select MatKhau From DangNhap where MaNV=N'" + MaNV + "'";
-            dbMain.LayMa(sqlString, CommandType.Text,ref MK);
+            dbMain.LayMa(sqlString, CommandType.Text, ref MK);
         }
 
         public bool ThemNhanVien(string MaNV, string Ho, string TenNV, bool Nu, DateTime NgayNV, DateTime NgaySinh, string DiaChi, string SDT, ref string error)

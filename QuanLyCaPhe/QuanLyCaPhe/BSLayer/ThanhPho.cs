@@ -71,5 +71,6 @@ namespace QuanLyCaPhe.BSLayer
             error = "Xóa thành công";
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
+
     }
 }
