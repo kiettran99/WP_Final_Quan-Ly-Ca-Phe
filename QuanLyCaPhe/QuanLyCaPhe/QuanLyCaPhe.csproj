@@ -50,6 +50,7 @@
     <Compile Include="BSLayer\KhachHang.cs" />
     <Compile Include="BSLayer\NhanVien.cs" />
     <Compile Include="BSLayer\ThanhPho.cs" />
+    <Compile Include="BSLayer\ThucAn.cs" />
     <Compile Include="DSLayer\DBMain.cs" />
     <Compile Include="FormAdmin.cs">
       <SubType>Form</SubType>
