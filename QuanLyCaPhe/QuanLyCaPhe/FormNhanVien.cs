@@ -86,10 +86,9 @@ namespace QuanLyCaPhe
                 txtDienThoai.Text = dgvNhanVien.Rows[r].Cells[5].Value.ToString();
                 txtDiaChi.Text = dgvNhanVien.Rows[r].Cells[6].Value.ToString();
             }
-            catch
-            {
-
+            catch {
             }
+            
         }
 
         private void btnLuu_Click(object sender, EventArgs e)

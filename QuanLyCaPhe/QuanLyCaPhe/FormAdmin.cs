@@ -17,7 +17,7 @@ namespace QuanLyCaPhe
         DataTable dataTable = null;
         NhanVien BLNV = new NhanVien();
         string err;
-        string tk, mk;
+      
         #endregion
 
         public FormAdmin()
