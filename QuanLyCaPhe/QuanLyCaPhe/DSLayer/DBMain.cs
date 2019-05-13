@@ -13,10 +13,16 @@ namespace QuanLyCaPhe.DBLayer
         SqlConnection conn = null;
         SqlCommand cmd = null;
         SqlDataAdapter dt = null;
+<<<<<<< HEAD
         string strConnection = "Data Source=DESKTOP-9O7TSTT\\SQLEXPRESS;" + "Initial Catalog=QuanLyCaPhe;" + "Integrated Security=True";
         //string strConnection = "Data Source=./;" + "Initial Catalog=QuanLyCaPhe;" + "Integrated Security=True";
 
 
+=======
+
+        //string strConnection = "Data Source=DESKTOP-9O7TSTT\\SQLEXPRESS;" + "Initial Catalog=QuanLyCaPhe;" + "Integrated Security=True";
+        string strConnection = "Data Source=./;" + "Initial Catalog=QuanLyCaPhe;" + "Integrated Security=True";
+>>>>>>> cb4ebb89b2c32d73a8c6da35a4fa58cb13cbbd7f
         public DBMain()
         {
             conn = new SqlConnection(strConnection);

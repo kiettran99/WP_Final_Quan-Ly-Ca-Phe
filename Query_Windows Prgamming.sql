@@ -1,4 +1,5 @@
-	
+﻿use master
+drop database if exists QuanLyCaPhe
 create database QuanLyCaPhe
 go
 use QuanLyCaPhe
@@ -42,11 +43,68 @@ create table ThanhPho (
 	primary key(TenThanhPho)
 )
 
+create table BanAn(
+	IDBanAn int not null,					
+	TenBan nvarchar(100) not null default N'Không có tên',
+	TinhTrang nvarchar(100) not null default N'Trống',	-- Ban dang trong hay dang nguoi
+	primary key (IDBanAn)
+)
+
+create table LoaiThucAn(
+	IDLoaiThucAn int not null,
+	TenLoaiThucAn nvarchar(100) not null default N'Không có tên',
+	primary key (IDLoaiThucAn)
+)
+
+
+create table ThucAn(
+	IDThucAn int not null,
+	TenThucAn nvarchar(100) not null default N'Không có tên',
+	IDLoaiThucAn int not null,
+	Gia float default 0,
+	primary key (IDThucAn),
+	foreign key (IDLoaiThucAn) references LoaiThucAn(IDLoaiThucAn)
+)
+
+create table HoaDon(
+	IDHoaDon int not null,
+	NgayTaoHoaDon datetime not null,
+	NgayKetThucHoaDon datetime,
+	IDBanAn int not null,
+	TinhTrang bit not null default 0, -- Tinh trang thanh toan hoa don
+	primary key (IDHoaDon),
+	foreign key (IDBanAn) references BanAn(IDBanAn)
+)
+
+--Hoa don (n,n) ThucAn
+create table ChiTietHoaDon(
+	IDHoaDon int not null,
+	IDThucAn int not null,
+	SoLuong int not null default 0 ,
+	primary key (IDHoaDon, IDThucAn),
+	foreign key (IDHoaDon) references HoaDon(IDHoaDon),
+	foreign key (IDThucAn) references ThucAn(IDThucAn)
+)
+
 delete from KhachHang
 delete from  NhanVien
 delete from ThanhPho
 delete from DangNhap
 
+
 insert into KhachHang values('KH1', 'Nguyen Xuan', 'Huy', 'Nam', '1997-12-05', '0904567841', '92 Hai Ba Trung Ho Chi Minh')
 Select MaNV From DangNhap where TaiKhoan='admin';
 Select TaiKhoan From DangNhap where MaNV = '1';
+
+delete from BanAn
+
+declare @i int = 0
+
+while @i <= 20
+begin
+	insert into BanAn(IDBanAn, TenBan) 
+	values(cast(@i as nvarchar(100)) , N'Bàn' + cast(@i as nvarchar(100)))
+	set @i = @i + 1
+end
+
+select * from BanAn
