@@ -341,6 +341,11 @@ namespace QuanLyCaPhe
 
         }
 
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnSua_Click(object sender, EventArgs e)
         {
 

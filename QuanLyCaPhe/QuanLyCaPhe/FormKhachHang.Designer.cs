@@ -53,6 +53,13 @@
             this.tbMKH = new System.Windows.Forms.TextBox();
             this.lbKH = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvKH)).BeginInit();
             this.panel1.SuspendLayout();
@@ -215,7 +222,7 @@
             // btnThoat
             // 
             this.btnThoat.Location = new System.Drawing.Point(733, 357);
-            this.btnThoat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(4);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 41);
             this.btnThoat.TabIndex = 32;
@@ -226,7 +233,7 @@
             // btnReload
             // 
             this.btnReload.Location = new System.Drawing.Point(641, 357);
-            this.btnReload.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReload.Margin = new System.Windows.Forms.Padding(4);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(75, 41);
             this.btnReload.TabIndex = 31;
@@ -237,7 +244,7 @@
             // btnHuy
             // 
             this.btnHuy.Location = new System.Drawing.Point(168, 357);
-            this.btnHuy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHuy.Margin = new System.Windows.Forms.Padding(4);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(75, 41);
             this.btnHuy.TabIndex = 30;
@@ -248,6 +255,14 @@
             // DgvKH
             // 
             this.DgvKH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvKH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7});
             this.DgvKH.Location = new System.Drawing.Point(27, 185);
             this.DgvKH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DgvKH.Name = "DgvKH";
@@ -331,6 +346,48 @@
             this.panel1.Size = new System.Drawing.Size(827, 52);
             this.panel1.TabIndex = 5;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "MaKH";
+            this.Column1.HeaderText = "Mã Khách Hàng";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "HoKH";
+            this.Column2.HeaderText = "Họ Khách Hàng";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "TenKH";
+            this.Column3.HeaderText = "Tên Khách Hàng";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "GioiTinh";
+            this.Column4.HeaderText = "Giới Tính";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "NgaySinh";
+            this.Column5.HeaderText = "Ngày Sinh";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "SDT";
+            this.Column6.HeaderText = "Số Điện Thoại ";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "DiaChi";
+            this.Column7.HeaderText = "Địa Chỉ";
+            this.Column7.Name = "Column7";
+            // 
             // FormKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -390,5 +447,12 @@
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbGioiTinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
     }
 }
