@@ -38,12 +38,7 @@ namespace QuanLyCaPhe.BSLayer
             error = "Sửa thành công";
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
-<<<<<<< HEAD
-        public void LayTKMK(string MaNV,ref string TK,ref string MK)
-
-=======
         public void LayTKMK(string MaNV, ref string TK, ref string MK)
->>>>>>> cb4ebb89b2c32d73a8c6da35a4fa58cb13cbbd7f
         {
             string sqlString;
             sqlString = "Select TaiKhoan From DangNhap where MaNV = N'" + MaNV + "'";
@@ -51,27 +46,7 @@ namespace QuanLyCaPhe.BSLayer
             sqlString = "Select MatKhau From DangNhap where MaNV=N'" + MaNV + "'";
             dbMain.LayMa(sqlString, CommandType.Text, ref MK);
         }
-        public bool ThemNhanVien(string MaNV, string Ho, string TenNV, bool Nu, DateTime NgayNV, DateTime NgaySinh, string DiaChi, string SDT, ref string error)
-        {
-            string sqlString;
-            try
-            {
-                sqlString = $"Insert into NhanVien values('{MaNV.Trim()}', '{Ho.Trim()}', '{TenNV.Trim()}', '{Nu}', '{NgaySinh.ToShortDateString()}', '{SDT.Trim()}', '{DiaChi.Trim()}', '{NgayNV.ToString()}')";
-            }
-            catch (SqlException)
-            {
-                error = "Thêm không được";
-                return false;
-            }
-            error = "Thêm thành công";
-            return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
-        }
 
-<<<<<<< HEAD
-        public bool XoaNhanVien(string MaNV, ref string error)
-        {
-            string sqlString = $"delete from NhanVien where MaNV = '{MaNV}'";
-=======
         public bool ThemNhanVien(string MaNV, string Ho, string TenNV, bool Nu, DateTime NgayNV, DateTime NgaySinh, string DiaChi, string SDT, ref string error)
         {
             string sqlString;
@@ -85,7 +60,6 @@ namespace QuanLyCaPhe.BSLayer
                 return false;
             }
             error = "Thêm thành công";
->>>>>>> cb4ebb89b2c32d73a8c6da35a4fa58cb13cbbd7f
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
 

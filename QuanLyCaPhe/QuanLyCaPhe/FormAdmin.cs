@@ -19,12 +19,8 @@ namespace QuanLyCaPhe
         ThucAn BLTA = new ThucAn();
         ThucAn ta = null;
         string err;
-<<<<<<< HEAD
-      
-=======
         string tk, mk;
         private string error;
->>>>>>> cb4ebb89b2c32d73a8c6da35a4fa58cb13cbbd7f
         #endregion
 
         public FormAdmin()
