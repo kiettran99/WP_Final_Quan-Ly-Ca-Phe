@@ -17,7 +17,8 @@ namespace QuanLyCaPhe
         DataTable dataTable = null;
         NhanVien BLNV = new NhanVien();
         ThucAn BLTA = new ThucAn();
-        ThucAn ta = null;
+        LoaiThucAn BTLTA = new LoaiThucAn();
+      
         string err;
         string tk, mk;
         private string error;
@@ -63,7 +64,6 @@ namespace QuanLyCaPhe
             {
                 MessageBox.Show(errr.Message);
             }
-
             txtMaNV.ResetText();
             txtTenNV.ResetText();
             txtHoNV.ResetText();
@@ -95,17 +95,13 @@ namespace QuanLyCaPhe
             {
                 MessageBox.Show(errr.Message);
             }
-
             txtFID.ResetText();
             txtFName.ResetText();
             txtSFname.ResetText();
             txtGiaF.ResetText();
-
             // không cho thao tác trên các nút lưu/hủy
             btnHuyF.Enabled = false;
             btnLuuF.Enabled = false;
-
-
             btnThemF.Enabled = true;
             btnXoaF.Enabled = true;
             btnSuaF.Enabled = true;
@@ -210,7 +206,8 @@ namespace QuanLyCaPhe
         private void btnThoat_Click(object sender, EventArgs e)
         {
             DialogResult kq = new DialogResult();
-            kq = MessageBox.Show("Bạn thật sự muốn thoát", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            kq = MessageBox.Show("Bạn thật sự muốn thoát", "Thông báo", 
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (kq == DialogResult.OK)
             {
                 Close();
@@ -246,18 +243,16 @@ namespace QuanLyCaPhe
         private void btnThemF_Click(object sender, EventArgs e)
         {
             btnThemF.Enabled = false;
-
             btnXoaF.Enabled = false;
             btnSuaF.Enabled = false;
             btnXemF.Enabled = false;
-
             btnLuuF.Enabled = true;
             btnHuyF.Enabled = true;
             txtFID.ResetText();
             txtFName.ResetText();
             txtSFname.ResetText();
             cmbDanhMucF.ResetText();
-           txtGiaF.ResetText();
+             txtGiaF.ResetText();
             Random rd = new Random();
             txtFID.Text = rd.Next(0, 10000).ToString();
 
@@ -345,6 +340,124 @@ namespace QuanLyCaPhe
         {
 
         }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel17_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        #region tabDanhmuc
+        private void LoadDataDM()
+        {
+            try
+            {
+                dataTable = new DataTable();
+                dataTable.Clear();
+                DataSet ds = BTLTA.LayDanhMuc();
+                dataTable = ds.Tables[0];
+                // đưa dữ liệu vào dataGridView
+                dgvDanhMuc.DataSource = dataTable;
+            }
+            catch (Exception errr)
+            {
+                MessageBox.Show(errr.Message);
+            }
+            txtLoaiThucAn.ResetText();
+            txtIDdm.ResetText();
+            // không cho thao tác trên các nút lưu/hủy
+            btnThem.Enabled = false;
+            btnLuu.Enabled = false;
+              btnXem.Enabled = true;
+            btnXoa.Enabled = true;
+            btnSua.Enabled = true;
+            dgvDanhMuc_CellClick(null, null);
+        }
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            btnThem.Enabled = false;
+            btnSua.Enabled = false;
+            btnXem.Enabled = false;
+            btnLuu.Enabled = true;
+            txtIDdm.ResetText();
+            txtLoaiThucAn.ResetText();
+            Random rd = new Random();
+            txtIDdm.Text = rd.Next(0, 100000).ToString();
+
+        }
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dr = MessageBox.Show("Bạn có muốn xóa ?", "Thông báo", MessageBoxButtons.OKCancel);
+                if (dr == DialogResult.OK)
+                {
+                    BTLTA.XoaDanhMuc(txtFID.Text, ref err);
+                    LoadDataDM();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+        private void btnLuu_Click_1(object sender, EventArgs e)
+        {
+            BTLTA.ThemDanhMuc(txtIDdm.Text, txtLoaiThucAn.Text, ref err);
+            // Load lại DataGridView
+            LoadDataDM();
+            // THông Báo
+            MessageBox.Show(err);
+        }
+
+        private void dgvDanhMuc_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int r = dgvDanhMuc.CurrentCell.RowIndex;
+                 txtIDdm.Text = dgvDanhMuc.Rows[r].Cells[0].Value.ToString();
+                txtLoaiThucAn.Text = dgvDanhMuc.Rows[r].Cells[1].Value.ToString();
+            }
+            catch
+            {
+
+            }
+        }
+        private void btnXem_Click(object sender, EventArgs e)
+        {
+            LoadDataDM();
+        }
+        private void btnSua_Click_1(object sender, EventArgs e)
+        {
+            txtLoaiThucAn.ResetText();
+            btnSua.Enabled = false;
+            btnXem.Enabled = false;
+            btnXoa.Enabled = false;
+            btnLuu.Enabled = true;
+            dgvDanhMuc_CellClick(null, null);
+        }
+        #endregion
+
+
+        private void txtIDdm_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
 
         private void btnSua_Click(object sender, EventArgs e)
         {

@@ -29,7 +29,6 @@ namespace QuanLyCaPhe
         {
             try
             {
-
                 dt = new DataTable();
                 dt.Clear();
                 DataSet ds = kh.LayKhachHang();
@@ -57,7 +56,6 @@ namespace QuanLyCaPhe
         private void btThem_Click(object sender, EventArgs e)
         {
             them = true;
-
             btThem.Enabled = false;
             btSua.Enabled = false;
             BtXoa.Enabled = false;
@@ -65,7 +63,6 @@ namespace QuanLyCaPhe
             btnReload.Enabled = false;
             btnHuy.Enabled = true;
             btLuu.Enabled = true;
-            
             tbTen.ResetText();
             tbMKH.ResetText();
             tbDiaChi.ResetText();
