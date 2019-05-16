@@ -25,7 +25,7 @@ namespace QuanLyCaPhe.BSLayer
             string sqlString;
             try
             {
-                sqlString = $"Insert into LoaiThucAn values('{MaDanhMuc.Trim()}', N'{TenDanhMuc.Trim()})";
+                sqlString = $"Insert into LoaiThucAn values('{MaDanhMuc.Trim()}', N'{TenDanhMuc.Trim()}')";
             }
             catch (SqlException)
             {

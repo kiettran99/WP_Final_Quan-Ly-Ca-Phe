@@ -18,6 +18,7 @@ namespace QuanLyCaPhe
         NhanVien BLNV = new NhanVien();
         ThucAn BLTA = new ThucAn();
         LoaiThucAn BTLTA = new LoaiThucAn();
+        BanAn BTLBA = new BanAn();
       
         string err;
         string tk, mk;
@@ -450,14 +451,121 @@ namespace QuanLyCaPhe
             dgvDanhMuc_CellClick(null, null);
         }
         #endregion
+        #region tabBanAn
+        private void LoadDataBanAn()
+        {
+            try
+            {
+                dataTable = new DataTable();
+                dataTable.Clear();
+                DataSet ds = BTLBA.LayBanAn();
+                dataTable = ds.Tables[0];
+                // đưa dữ liệu vào dataGridView
+               dgvBanAn.DataSource = dataTable;
+            }
+            catch (Exception errr)
+            {
+                MessageBox.Show(errr.Message);
+            }
+           txtIDB.ResetText();
+            txtTenBanAn.ResetText();
+            txtTrangThai.ResetText();
+            // không cho thao tác trên các nút lưu/hủy
+            btnThemB.Enabled = true;
+           btnSuaB.Enabled =true;
+            btnXoaB.Enabled = true;
+           btnLuuB.Enabled = false;
+            btnXemB.Enabled = true;
+            dgvDanhMuc_CellClick(null, null);
+        }
 
+        private void dgvBanAn_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int r = dgvBanAn.CurrentCell.RowIndex;
+                txtIDB.Text = dgvBanAn.Rows[r].Cells[0].Value.ToString();
+                txtTenBanAn.Text = dgvBanAn.Rows[r].Cells[1].Value.ToString();
+                txtTrangThai.Text = dgvBanAn.Rows[r].Cells[2].Value.ToString();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void btnThemB_Click(object sender, EventArgs e)
+        {
+            btnThemB.Enabled = false;
+            btnSuaB.Enabled = false;
+            btnXemB.Enabled = false;
+            btnLuuB.Enabled = true;
+            txtTrangThai.ResetText();
+            txtIDB.ResetText();
+            txtTenBanAn.ResetText();
+            Random rd = new Random();
+            txtIDB.Text = rd.Next(0, 100000).ToString();
+
+        }
+        private void btnXoaB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dr = MessageBox.Show("Bạn có muốn xóa ?", "Thông báo", MessageBoxButtons.OKCancel);
+                if (dr == DialogResult.OK)
+                {
+                    BTLBA.XoaBanAn(txtFID.Text, ref err);
+                   LoadDataBanAn();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+
+        private void btnSuaB_Click(object sender, EventArgs e)
+        {
+            txtIDB.ResetText();
+            txtTenBanAn.ResetText();
+            txtTrangThai.ResetText();
+            btnSuaB.Enabled = false;
+            btnXemB.Enabled = false;
+            btnXoaB.Enabled = false;
+            btnLuuB.Enabled = true;
+            dgvBanAn_CellClick(null, null);
+        }
+
+        private void btnXemB_Click(object sender, EventArgs e)
+        {
+            LoadDataBanAn();
+        }
+
+        private void btnLuuB_Click(object sender, EventArgs e)
+        {
+            BTLBA.ThemBanAn(txtIDB.Text, txtTenBanAn.Text,txtTrangThai.Text, ref err);
+            // Load lại DataGridView
+           LoadDataBanAn();
+            // THông Báo
+            MessageBox.Show(err);
+        }
+
+
+
+        #endregion
 
         private void txtIDdm_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-       
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
 
         private void btnSua_Click(object sender, EventArgs e)
         {

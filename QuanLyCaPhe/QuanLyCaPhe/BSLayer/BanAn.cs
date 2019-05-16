@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using QuanLyCaPhe.DBLayer;
 using System.Data;
-
+using System.Data.SqlClient;
 namespace QuanLyCaPhe.BSLayer
 {
     public class BanAn
@@ -33,7 +33,51 @@ namespace QuanLyCaPhe.BSLayer
 
             return lBanAn;
         }
-        
+
+
+        public DataSet LayBanAn()
+        {
+            return db.ExecuteQueryDataSet("select *from BanAn", CommandType.Text);
+        }
+        public bool ThemBanAn(string MaBan, string TenBan, string TinhTrang, ref string error)
+        {
+            string sqlString;
+            try
+            {
+                sqlString = $"Insert into BanAn values('{MaBan.Trim()}', N'{TenBan.Trim()}',N'{TinhTrang.Trim()}')";
+            }
+            catch (SqlException)
+            {
+                error = "Thêm không được";
+                return false;
+            }
+            error = "Thêm thành công";
+            return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
+        }
+        public bool SuaBanAn(string MaBan, string TenBan, string TinhTrang, ref string error)
+        {
+            string sqlString;
+            try
+            {
+                sqlString = "Update BanAn Set MaBan=N'" + MaBan + "',TenBanAn=N'" + TenBan + "',TenBanAn=N'" + TinhTrang + "'";
+            }
+            catch (SqlException)
+            {
+                error = "Sửa không được";
+                return false;
+            }
+            error = "Sửa thành công";
+            return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
+        }
+        public bool XoaBanAn(string MaBan, ref string error)
+        {
+            string sqlString = $"delete from BanAn where MaBan = '{MaBan}'";
+            return db.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
+        }
+
+
+
+
     }
 
     public class Ban
@@ -86,7 +130,7 @@ namespace QuanLyCaPhe.BSLayer
            this.id = 0;
            this.tenBan = "Không có tên";
            this.tinhTrang = "Trống";
-        }
+        }   
 
         public Ban(int idBan, string tenban, string tinhtrang)
         {
