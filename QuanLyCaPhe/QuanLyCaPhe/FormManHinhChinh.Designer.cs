@@ -57,7 +57,8 @@
             this.nudThemmon = new System.Windows.Forms.NumericUpDown();
             this.btnThemMon = new System.Windows.Forms.Button();
             this.dgvhoadon = new System.Windows.Forms.DataGridView();
-            this.TenThucAn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXoaMon = new System.Windows.Forms.Button();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -276,6 +277,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnXoaMon);
             this.panel2.Controls.Add(this.cmbmonan);
             this.panel2.Controls.Add(this.cmbdanhmucmonan);
             this.panel2.Controls.Add(this.nudThemmon);
@@ -293,7 +295,7 @@
             this.cmbmonan.Location = new System.Drawing.Point(8, 46);
             this.cmbmonan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbmonan.Name = "cmbmonan";
-            this.cmbmonan.Size = new System.Drawing.Size(348, 28);
+            this.cmbmonan.Size = new System.Drawing.Size(239, 28);
             this.cmbmonan.TabIndex = 4;
             // 
             // cmbdanhmucmonan
@@ -303,7 +305,7 @@
             this.cmbdanhmucmonan.Location = new System.Drawing.Point(8, 5);
             this.cmbdanhmucmonan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbdanhmucmonan.Name = "cmbdanhmucmonan";
-            this.cmbdanhmucmonan.Size = new System.Drawing.Size(348, 28);
+            this.cmbdanhmucmonan.Size = new System.Drawing.Size(239, 28);
             this.cmbdanhmucmonan.TabIndex = 3;
             this.cmbdanhmucmonan.SelectedIndexChanged += new System.EventHandler(this.cmbdanhmucmonan_SelectedIndexChanged);
             // 
@@ -328,10 +330,10 @@
             // 
             // btnThemMon
             // 
-            this.btnThemMon.Location = new System.Drawing.Point(378, 2);
+            this.btnThemMon.Location = new System.Drawing.Point(276, 0);
             this.btnThemMon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnThemMon.Name = "btnThemMon";
-            this.btnThemMon.Size = new System.Drawing.Size(124, 77);
+            this.btnThemMon.Size = new System.Drawing.Size(107, 77);
             this.btnThemMon.TabIndex = 1;
             this.btnThemMon.Text = "Thêm Món";
             this.btnThemMon.UseVisualStyleBackColor = true;
@@ -342,7 +344,7 @@
             this.dgvhoadon.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvhoadon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvhoadon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TenThucAn,
+            this.Column2,
             this.SoLuong,
             this.Gia,
             this.Column1});
@@ -352,11 +354,22 @@
             this.dgvhoadon.Size = new System.Drawing.Size(645, 426);
             this.dgvhoadon.TabIndex = 2;
             // 
-            // TenThucAn
+            // btnXoaMon
             // 
-            this.TenThucAn.DataPropertyName = "TenThucAn";
-            this.TenThucAn.HeaderText = "Tên Thức Ăn";
-            this.TenThucAn.Name = "TenThucAn";
+            this.btnXoaMon.Location = new System.Drawing.Point(408, 0);
+            this.btnXoaMon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnXoaMon.Name = "btnXoaMon";
+            this.btnXoaMon.Size = new System.Drawing.Size(107, 77);
+            this.btnXoaMon.TabIndex = 5;
+            this.btnXoaMon.Text = "Xóa Món";
+            this.btnXoaMon.UseVisualStyleBackColor = true;
+            this.btnXoaMon.Click += new System.EventHandler(this.btnXoaMon_Click);
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "TenThucAn";
+            this.Column2.HeaderText = "Tên Thức Ăn";
+            this.Column2.Name = "Column2";
             // 
             // SoLuong
             // 
@@ -434,10 +447,11 @@
         private System.Windows.Forms.ComboBox cmbdanhmucmonan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTongtien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenThucAn;
+        private System.Windows.Forms.ToolStripMenuItem menuAdmin;
+        private System.Windows.Forms.Button btnXoaMon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.ToolStripMenuItem menuAdmin;
     }
 }

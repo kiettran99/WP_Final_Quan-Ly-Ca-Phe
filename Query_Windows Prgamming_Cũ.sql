@@ -260,11 +260,16 @@ INSERT	ChiTietHoaDon
 VALUES  ( 7, -- idBill - int
           5, -- idFood - int
           2  -- count - int
-        )
+		  )
+--Thêm
+select * from DangNhap
+select * from NhanVien
+insert into DangNhap values('admin', 'admin', 0);
+insert into DangNhap values('nv1', 'nv1', 1);
+insert into NhanVien values(1, 'Nguyen Xuan', 'Huy', 0, '1997-12-05', '0904567841', '92 Hai Ba Trung Ho Chi Minh', '2018-12-14' )
 
-		select * from DangNhap
-		select * from NhanVien
+select * from ChiTietHoaDon
+select * from HoaDon
 
-		insert into DangNhap values('admin', 'admin', 0);
-		insert into DangNhap values('nv1', 'nv1', 1);
-		insert into NhanVien values(1, 'Nguyen Xuan', 'Huy', 0, '1997-12-05', '0904567841', '92 Hai Ba Trung Ho Chi Minh' )
+delete from ChiTietHoaDon where IDThucAn = 7 and IDHoaDon = (select IDHoaDon from HoaDon where IDBanAn = 6 and HoaDon.TinhTrang = 0) 
+

@@ -31,7 +31,7 @@ namespace QuanLyCaPhe
             chitiethd = new ChiTietHoaDon();
             loaita = new LoaiThucAn();
             thucan = new ThucAn();
-            hoadon = new HoaDon();           
+            hoadon = new HoaDon();
         }
 
         #region Method
@@ -185,7 +185,7 @@ namespace QuanLyCaPhe
 
                 MessageBox.Show("Thoát thành công !", "Thông báo");
             }
-           
+
         }
 
         private void menuNhanVien_Click(object sender, EventArgs e)
@@ -254,6 +254,34 @@ namespace QuanLyCaPhe
             if (nudgiamgia.Value >= 0)
                 tongtien -= tongtien * (float)nudgiamgia.Value / 100;
             txtTongtien.Text = tongtien.ToString();
+        }
+
+        private void btnXoaMon_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (MessageBox.Show("Bạn thật sự muốn xóa đồ uống này ?" + idBan, "Thông báo",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+                {
+                    int r = dgvhoadon.CurrentCell.RowIndex;
+                    string tenThucAn = dgvhoadon.Rows[r].Cells[1].Value.ToString();
+                    int idThucAn = thucan.TimIDThucAn(tenThucAn, ref error);
+                    int idBan = (dgvhoadon.Tag as Ban).Id;
+                    chitiethd.XoaChiTietHoaDon(idBan, idThucAn, ref error);
+                    HienThiHoaDon((dgvhoadon.Tag as Ban).Id);
+                    //Khi xóa không còn đô uống nào, ta sẽ chuyển trạng thái bàn đang trống.
+                    if (dgvhoadon.Rows.Count - 1 == 0)
+                    {
+                        hoadon.XoaHoaDon(hoadon.LayIDHoaDonTheoBan(idBan), ref error);
+                        banan.ThayDoiTinhTrang((dgvhoadon.Tag as Ban).Id, false, ref error);
+                        flpnlBanAn.Controls.Clear();
+                        LoadTable();
+                        HienThiHoaDon((dgvhoadon.Tag as Ban).Id);
+                    }
+                }                
+            }
+            catch { }
         }
     }
 }

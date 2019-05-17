@@ -49,5 +49,12 @@ namespace QuanLyCaPhe.BSLayer
             string strSQL = $"Select Max(HoaDon.IDHoaDon) from HoaDon";
             return (int)db.FirstRowQuery(strSQL, CommandType.Text, ref error);
         }
+
+        public void XoaHoaDon(int idHoaDon, ref string error)
+        {
+            string query = "";
+            query = $"delete from HoaDon where idHoaDon = {idHoaDon} and TinhTrang = 0";
+            db.MyExecuteNonQuery(query, CommandType.Text, ref err);
+        }
     }
 }

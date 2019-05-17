@@ -38,5 +38,11 @@ namespace QuanLyCaPhe.BSLayer
             string strSQL = $"Insert into ChiTietHoaDon(IDHoaDon, IDThucAn, SoLuong) values({idHoaDon}, {idThucAn}, {count})";
             db.MyExecuteNonQuery(strSQL, CommandType.Text, ref error);
         }
+
+        public void XoaChiTietHoaDon(int idBan, int idThucAn, ref string error)
+        {
+            string strSQL = $"delete from ChiTietHoaDon where IDThucAn = {idThucAn} and IDHoaDon = (select IDHoaDon from HoaDon where IDBanAn = {idBan} and TinhTrang = 0)";
+            db.MyExecuteNonQuery(strSQL, CommandType.Text, ref error);
+        }
     }
 }
