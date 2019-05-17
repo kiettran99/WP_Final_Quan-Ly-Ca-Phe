@@ -21,6 +21,8 @@ namespace QuanLyCaPhe
         HoaDon hoadon = null;
         int idBan;
         float TongTienGoc = 0;
+        //Biến Tĩnh Trạng Thái
+        public static QuyenTruyCap quyentruycap = QuyenTruyCap.Khong;
 
         public FormManHinhChinh()
         {
@@ -29,8 +31,7 @@ namespace QuanLyCaPhe
             chitiethd = new ChiTietHoaDon();
             loaita = new LoaiThucAn();
             thucan = new ThucAn();
-            hoadon = new HoaDon();
-            LoadTable();
+            hoadon = new HoaDon();           
         }
 
         #region Method
@@ -144,6 +145,47 @@ namespace QuanLyCaPhe
         {
             FormDangNhap formdangnhap = new FormDangNhap();
             formdangnhap.ShowDialog();
+
+            if (quyentruycap == QuyenTruyCap.Administrator)
+            {
+                LoadTable();
+                menuAdmin.Visible = true;
+                panel1.Enabled = true;
+
+                menuThoat.Enabled = true;
+                menuDangNhap.Enabled = false;
+            }
+            else
+            {
+                if (quyentruycap == QuyenTruyCap.NhanVien)
+                {
+                    LoadTable();
+                    panel1.Enabled = true;
+                    menuThoat.Enabled = true;
+                    menuDangNhap.Enabled = false;
+                }
+            }
+        }
+
+        private void menuThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Bạn muốn thoát tài khoản ?", "Thông báo", MessageBoxButtons.OKCancel);
+
+            if (dr == DialogResult.OK)
+            {
+                menuAdmin.Visible = false;
+                panel1.Enabled = false;
+
+                menuThoat.Enabled = false;
+                menuDangNhap.Enabled = true;
+
+                flpnlBanAn.Controls.Clear();
+
+                quyentruycap = QuyenTruyCap.Khong;
+
+                MessageBox.Show("Thoát thành công !", "Thông báo");
+            }
+           
         }
 
         private void menuNhanVien_Click(object sender, EventArgs e)

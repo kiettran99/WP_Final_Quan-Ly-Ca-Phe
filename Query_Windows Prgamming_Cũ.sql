@@ -7,7 +7,7 @@ use QuanLyCaPhe
 go
 
 create table KhachHang (
-	MaKH varchar(20) not null,
+	MaKH int not null,
 	HoKH varchar(20),
 	TenKH varChar(20),
 	GioiTinh varchar(10),
@@ -18,7 +18,7 @@ create table KhachHang (
 )
 
 create table NhanVien(
-	MaNV varchar(20) not null,
+	MaNV int not null,
 	HoNV varchar(20),
 	TenNV varchar(20),
 	Nu		bit,
@@ -26,14 +26,13 @@ create table NhanVien(
 	SDT varchar(20),
 	DiaChi varchar(30),
 	NgayBD datetime,
-
 	primary key(MaNV)
 )
 
 create table DangNhap(
 	TaiKhoan varchar(20),
 	MatKhau varchar(20),
-	MaNV varchar(20),
+	MaNV int,
 	primary key(TaiKhoan)
 )
 
@@ -71,6 +70,8 @@ create table HoaDon(
 	NgayTaoHoaDon datetime not null,
 	NgayKetThucHoaDon datetime,
 	IDBanAn int not null,
+	TongTien float default 0,
+	GiamGia int default 0,
 	TinhTrang bit not null default 0, -- Tinh trang thanh toan hoa don
 	primary key (IDHoaDon),
 	foreign key (IDBanAn) references BanAn(IDBanAn)
@@ -86,15 +87,32 @@ create table ChiTietHoaDon(
 	foreign key (IDThucAn) references ThucAn(IDThucAn)
 )
 
+--Cham Cong
+create table ChamCong(
+	MaNV int not null ,
+	TenNV varchar(20),
+	GioIn time,
+	GioOut	time,
+	primary key (MaNV),
+	foreign key (MaNV) references NhanVien(MaNV)	
+)
+-- tính lương
+create table TinhLuong(
+	MaNV int  not null,
+	TenNV varchar(20),
+	SoGioLam float,
+	Luong float,
+	primary key(MaNV),
+	foreign key (MaNV) references ChamCong(MaNV)
+)
+
 delete from KhachHang
 delete from  NhanVien
 delete from ThanhPho
 delete from DangNhap
 
 
-insert into KhachHang values('KH1', 'Nguyen Xuan', 'Huy', 'Nam', '1997-12-05', '0904567841', '92 Hai Ba Trung Ho Chi Minh')
-Select MaNV From DangNhap where TaiKhoan='admin';
-Select TaiKhoan From DangNhap where MaNV = '1';
+insert into KhachHang values(1, 'Nguyen Xuan', 'Huy', 'Nam', '1997-12-05', '0904567841', '92 Hai Ba Trung Ho Chi Minh')
 
 delete from BanAn
 delete from LoaiThucAn
@@ -190,19 +208,25 @@ VALUES  ( 5,
 			GETDATE() , -- DateCheckIn - date
           NULL , -- DateCheckOut - date
           3 , -- idTable - int
-          1  -- status - int
+		  0,
+		  0,
+          0  -- status - int
         )
         
 INSERT	HoaDon
 VALUES  (6, GETDATE() , -- DateCheckIn - date
           NULL , -- DateCheckOut - date
+		   0,
+		  0,
           4, -- idTable - int
-          1  -- status - int
+          0  -- status - int
         )
 INSERT	HoaDon
 VALUES  (7, GETDATE() , -- DateCheckIn - date
           GETDATE() , -- DateCheckOut - date
           5 , -- idTable - int
+		   0,
+		  0,
           1  -- status - int
         )
 
@@ -236,5 +260,11 @@ INSERT	ChiTietHoaDon
 VALUES  ( 7, -- idBill - int
           5, -- idFood - int
           2  -- count - int
-          )
-Update HoaDon set TinhTrang =1 where IDHoaDon = 11
+        )
+
+		select * from DangNhap
+		select * from NhanVien
+
+		insert into DangNhap values('admin', 'admin', 0);
+		insert into DangNhap values('nv1', 'nv1', 1);
+		insert into NhanVien values(1, 'Nguyen Xuan', 'Huy', 0, '1997-12-05', '0904567841', '92 Hai Ba Trung Ho Chi Minh' )

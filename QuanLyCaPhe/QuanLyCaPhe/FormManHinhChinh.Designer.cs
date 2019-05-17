@@ -42,6 +42,7 @@
             this.trợGiúpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinỨngDụngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinỨngDụngToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAdmin = new System.Windows.Forms.ToolStripMenuItem();
             this.flpnlBanAn = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -60,7 +61,6 @@
             this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.menuAdmin = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -107,9 +107,11 @@
             // 
             // menuThoat
             // 
+            this.menuThoat.Enabled = false;
             this.menuThoat.Name = "menuThoat";
             this.menuThoat.Size = new System.Drawing.Size(250, 30);
             this.menuThoat.Text = "Thoát           Alt + Z";
+            this.menuThoat.Click += new System.EventHandler(this.menuThoat_Click);
             // 
             // quảnLýToolStripMenuItem
             // 
@@ -178,6 +180,14 @@
             this.thôngTinỨngDụngToolStripMenuItem1.Size = new System.Drawing.Size(258, 30);
             this.thôngTinỨngDụngToolStripMenuItem1.Text = "Thông tin ứng dụng";
             // 
+            // menuAdmin
+            // 
+            this.menuAdmin.Name = "menuAdmin";
+            this.menuAdmin.Size = new System.Drawing.Size(133, 29);
+            this.menuAdmin.Text = "Administrator";
+            this.menuAdmin.Visible = false;
+            this.menuAdmin.Click += new System.EventHandler(this.menuAdmin_Click);
+            // 
             // flpnlBanAn
             // 
             this.flpnlBanAn.AutoScroll = true;
@@ -193,6 +203,7 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.dgvhoadon);
+            this.panel1.Enabled = false;
             this.panel1.Location = new System.Drawing.Point(698, 49);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
@@ -365,13 +376,6 @@
             this.Column1.HeaderText = "Thành Tiền";
             this.Column1.Name = "Column1";
             this.Column1.Width = 130;
-            // 
-            // menuAdmin
-            // 
-            this.menuAdmin.Name = "menuAdmin";
-            this.menuAdmin.Size = new System.Drawing.Size(133, 29);
-            this.menuAdmin.Text = "Administrator";
-            this.menuAdmin.Click += new System.EventHandler(this.menuAdmin_Click);
             // 
             // FormManHinhChinh
             // 

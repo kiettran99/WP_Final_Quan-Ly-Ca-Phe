@@ -845,6 +845,14 @@ namespace QuanLyCaPhe
 
 
         #endregion
+        #region TabTimKim
+
+
+        private void btnTimkimF_Click(object sender, EventArgs e)
+        {
+            dgvThucAn.DataSource = BLTA.TimKimF(txtSFname.Text).Tables[0];
+        }
+        #endregion
 
         private void btnThemTK_Click(object sender, EventArgs e)
         {
@@ -882,6 +890,8 @@ namespace QuanLyCaPhe
         {
 
         }
+
+        
 
         private void btnSua_Click(object sender, EventArgs e)
         {
