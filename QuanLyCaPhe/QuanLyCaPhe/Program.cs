@@ -20,7 +20,7 @@ namespace QuanLyCaPhe
 
           //  Application.Run(new FormAdmin());
 
-            Application.Run(new FormManHinhChinh());
+            Application.Run(new FormAdmin());
         }
     }
 }

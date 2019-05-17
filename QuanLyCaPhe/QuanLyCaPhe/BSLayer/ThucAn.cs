@@ -70,5 +70,9 @@ namespace QuanLyCaPhe.BSLayer
             return (int)dbMain.FirstRowQuery(strSQL, CommandType.Text, ref error);
         }
 
+        public DataSet TimKimF(string TenThucAn)
+        {
+            return dbMain.ExecuteQueryDataSet($"select *from ThucAn where TenThucAn like N'%{TenThucAn}%'", CommandType.Text);
+        }
     }
 }
