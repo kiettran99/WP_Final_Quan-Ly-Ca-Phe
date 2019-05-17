@@ -18,7 +18,7 @@ namespace QuanLyCaPhe.BSLayer
 
         public bool KiemTra(string tk,string mk,ref string err,ref string MaNV)
         {            
-                string sqlstring = "Select Count(*) From DangNhap Where TaiKhoan = '" + tk + "'";
+                string sqlstring = "Select Count(*) From DangNhap Where TaiKhoan = '" + tk + "'" +  "AND MatKhau='" + mk + "'";
             if (dbMain.CheckThongTin(sqlstring, CommandType.Text, ref err) == false)
             {
                 err = "Thất Bại";

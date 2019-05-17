@@ -66,5 +66,13 @@ namespace QuanLyCaPhe.BSLayer
 
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
+
+        public void LaySoTime(string MaNV, ref float SoTime)
+        {
+            string sqlString = "Select SoGioLam from TinhLuong where MaNV ='" + MaNV + "'";
+            try { dbMain.LaySoTime(sqlString, CommandType.Text, ref SoTime); }
+            catch { }
+            return;
+        }
     }
 }

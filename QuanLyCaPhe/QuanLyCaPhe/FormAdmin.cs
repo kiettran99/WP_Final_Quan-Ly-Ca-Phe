@@ -624,17 +624,19 @@ namespace QuanLyCaPhe
             dtbNgayNV.ResetText();
             dtbNgaySinh.ResetText();
 
-            Random rd = new Random();
-            txtMaNV.Text = rd.Next(0, 50000).ToString();
-
-            dgvNhanVien_CellClick(null, null);
+            int idNV = 1;
+            if (dgvNhanVien.Rows.Count > 1)
+                idNV = (int.Parse(dgvNhanVien.Rows[dgvNhanVien.Rows.Count - 2].Cells[0].Value.ToString()) + 1);
+            txtMaNV.Text = idNV.ToString();
         }
 
         private void btnLuuNV_Click(object sender, EventArgs e)
         {
 
             BLNV.ThemNhanVien(txtMaNV.Text, txtHoNV.Text.Trim(), txtTenNV.Text.Trim(), rdbNu.Checked, dtbNgayNV.Value,
-                dtbNgaySinh.Value, txtDiaChi.Text.Trim(), txtDienThoai.Text.Trim(), ref err);
+                    dtbNgaySinh.Value, txtDiaChi.Text.Trim(), txtDienThoai.Text.Trim(), ref err);
+            BLCHC.ThemNhanVien(txtMaNV.Text.Trim(), txtTenNV.Text.Trim(), ref err);
+            BLTL.ThemNhanVien(txtMaNV.Text.Trim(), txtTenNV.Text.Trim(), ref err);
             // Load lại DataGridView
             LoadDataNV();
             // THông Báo
@@ -741,6 +743,18 @@ namespace QuanLyCaPhe
             else
             {
                 BLCHC.ChamCongNhanVien(txtMaNVCC.Text.Trim(), dtpTimein.Value.TimeOfDay, dtpTimeOut.Value.TimeOfDay, ref err);
+                TimeSpan timein = new TimeSpan();
+                TimeSpan timeout = new TimeSpan();
+
+                BLTL.LayDuLieu(txtMaNVL.Text.Trim(), ref timein, ref timeout);
+
+                float Hour = -float.Parse(timein.Hours.ToString()) + float.Parse(timeout.Hours.ToString());
+                float Minute = -float.Parse(timein.Minutes.ToString()) + float.Parse(timeout.Minutes.ToString());
+                float Millisecond = -float.Parse(timein.Milliseconds.ToString()) + float.Parse(timeout.Milliseconds.ToString());
+                Hour += Minute / 60 + Millisecond / 3600;
+                float sotime = 0;
+                BLTL.LaySoTime(txtMaNVL.Text.Trim(), ref sotime);
+                BLTL.TinhLuongNhanVien(txtMaNVCC.Text.Trim(), Hour + sotime, 0, ref error);
                 LoadDataCHC();
                 MessageBox.Show(err);
             }
@@ -773,6 +787,15 @@ namespace QuanLyCaPhe
             }
             LoadDataCHC();
         }
+
+        private void dateTimePicker5_ValueChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dgvChamCong.Rows.Count - 1; i++)
+            {
+                BLCHC.BoChamCong(dgvChamCong.Rows[i].Cells[0].Value.ToString(), ref err);
+            }
+            LoadDataCHC();
+        }
         #endregion
 
         #region TabTinhLuong
@@ -793,8 +816,8 @@ namespace QuanLyCaPhe
             }
             txtTenL.ResetText();
             txtMaNVL.ResetText();
-            nrdTangCa.ResetText();
-            txtThuong.ResetText();
+            nrdTangCa.Value = 0;
+            txtThuong.Text = 0.ToString();
             btnTinhLuong.Enabled = true;
             label30.Text = dateTimePicker5.Value.Month.ToString();
             dgvTinhLuong_CellClick(null, null);
@@ -802,8 +825,8 @@ namespace QuanLyCaPhe
 
         private void dgvTinhLuong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            nrdTangCa.ResetText();
-            txtThuong.ResetText();
+            nrdTangCa.Value = 0;
+            txtThuong.Text = 0.ToString();
             try
             {
                 int r = dgvTinhLuong.CurrentCell.RowIndex;
@@ -827,18 +850,10 @@ namespace QuanLyCaPhe
 
         private void btnTinhLuong_Click(object sender, EventArgs e)
         {
-            TimeSpan timein = new TimeSpan();
-
-            TimeSpan timeout = new TimeSpan();
-            BLTL.LayDuLieu(txtMaNVL.Text.Trim(), ref timein, ref timeout);
-
-            float Hour = float.Parse(timein.Hours.ToString()) - float.Parse(timeout.Hours.ToString());
-            float Minute = float.Parse(timein.Minutes.ToString()) - float.Parse(timeout.Minutes.ToString());
-            float Millisecond = float.Parse(timein.Milliseconds.ToString()) - float.Parse(timeout.Milliseconds.ToString());
-            Hour += Minute / 60 + Millisecond / 3600;
-            float Luong;
-            Luong = Hour * 14000 + float.Parse(nrdTangCa.Value.ToString()) * 7 * 14000 + float.Parse(txtThuong.Text);
-            BLTL.TinhLuongNhanVien(txtMaNVL.Text.Trim(), Hour, Luong, ref err);
+            float Time = 0;
+            BLTL.LaySoTime(txtMaNVL.Text.Trim(), ref Time);
+            float Luong = Time * 14000 + float.Parse(nrdTangCa.Value.ToString()) * 7 * 14000 + float.Parse(txtThuong.Text);
+            BLTL.TinhLuongNhanVien(txtMaNVL.Text.Trim(), Time, Luong, ref err);
             LoadTL();
         }
 
@@ -891,8 +906,6 @@ namespace QuanLyCaPhe
         {
 
         }
-
-        
 
         private void btnSua_Click(object sender, EventArgs e)
         {

@@ -196,5 +196,33 @@ namespace QuanLyCaPhe.DBLayer
 
         }
 
+
+        /// <summary>
+        /// Lấy SoGioLam.
+        /// </summary>
+        /// 
+        public void LaySoTime(string strSQL, CommandType ct, ref float dl)
+        {
+
+            try
+            {
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+                conn.Open();
+
+                cmd.CommandText = strSQL;
+                cmd.CommandType = ct;
+                dl = float.Parse(cmd.ExecuteScalar().ToString());
+            }
+            catch (SqlException)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
     }
 }
