@@ -11,10 +11,11 @@ using QuanLyCaPhe.BSLayer;
 namespace QuanLyCaPhe
 {
     public partial class FormDangNhap : Form
-    {       
+    {
         DangNhap DN = new DangNhap();
         string err;
         public static string MaNV;
+
         public FormDangNhap()
         {
             InitializeComponent();
@@ -23,23 +24,29 @@ namespace QuanLyCaPhe
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
 
-            if(DN.KiemTra(txtTen.Text.Trim(), txtMatKhau.Text.Trim(), ref err,ref MaNV)==true)
+            if (DN.KiemTra(txtTen.Text.Trim(), txtMatKhau.Text.Trim(), ref err, ref MaNV) == true)
             {
                 if (txtTen.Text.Trim() == "admin" && txtMatKhau.Text.Trim() == "admin")
                 {
-                    FormAdmin formAdmin = new FormAdmin();
-                    formAdmin.ShowDialog();
+                    FormManHinhChinh.quyentruycap = QuyenTruyCap.Administrator;
                 }
                 else
                 {
-                    FormNhanVien formNhanVien = new FormNhanVien();
-                    formNhanVien.ShowDialog();
-
+                    FormManHinhChinh.quyentruycap = QuyenTruyCap.NhanVien;
                 }
-               
+
             }
-            MessageBox.Show(err);
-           
+            else
+            {
+                FormManHinhChinh.quyentruycap = QuyenTruyCap.Khong;
+            }
+            if (err == "Thành Công")
+            {
+                Close();
+                MessageBox.Show(err);
+            }
+            else
+                MessageBox.Show(err);          
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
