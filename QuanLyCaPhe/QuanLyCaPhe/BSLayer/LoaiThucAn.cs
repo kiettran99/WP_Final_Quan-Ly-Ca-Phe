@@ -32,14 +32,15 @@ namespace QuanLyCaPhe.BSLayer
             string sqlString;
             try
             {
-                sqlString = $"Insert into LoaiThucAn values('{MaDanhMuc.Trim()}', N'{TenDanhMuc.Trim()}')";
+                sqlString = $"Insert into LoaiThucAn values(N'{MaDanhMuc.Trim()}', N'{TenDanhMuc.Trim()}')";
+                error = "Thêm thành công";
             }
-            catch (SqlException)
+            catch (SqlException err)
             {
-                error = "Thêm không được";
+                error = err.Message;
                 return false;
             }
-            error = "Thêm thành công";
+            
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
         public bool SuaDanhMuc(string MaDanhMuc, string TenDanhMuc, ref string error)
@@ -47,14 +48,15 @@ namespace QuanLyCaPhe.BSLayer
             string sqlString;
             try
             {
-                sqlString = "Update LoaiThucAn Set MaDanhMuc=N'" + MaDanhMuc + "',TenDanhMuc=N'" + TenDanhMuc + "'";
+                sqlString = "Update LoaiThucAn Set TenLoaiThucAn = N'" + TenDanhMuc  +"' Where IDLoaiThucAn= '" + MaDanhMuc + "'";
+                error = "Sửa thành công";
             }
             catch (SqlException)
             {
                 error = "Sửa không được";
                 return false;
             }
-            error = "Sửa thành công";
+            
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
         public bool XoaDanhMuc(string MaDanhMuc, ref string error)

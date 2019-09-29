@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using QuanLyCaPhe.DBLayer;
 using System.Data;
 using System.Data.SqlClient;
+
 namespace QuanLyCaPhe.BSLayer
 {
     class DangNhap
@@ -16,9 +17,9 @@ namespace QuanLyCaPhe.BSLayer
             dbMain = new DBMain();
         }
 
-        public bool KiemTra(string tk,string mk,ref string err,ref string MaNV)
-        {            
-                string sqlstring = "Select Count(*) From DangNhap Where TaiKhoan = '" + tk + "'" +  "AND MatKhau='" + mk + "'";
+        public bool KiemTra(string tk, string mk, ref string err, ref int MaNV)
+        {
+            string sqlstring = "Select Count(*) From DangNhap Where TaiKhoan = '" + tk + "'" + "AND MatKhau='" + mk + "'";
             if (dbMain.CheckThongTin(sqlstring, CommandType.Text, ref err) == false)
             {
                 err = "Thất Bại";
@@ -28,13 +29,12 @@ namespace QuanLyCaPhe.BSLayer
             {
                 err = "Thành Công";
                 sqlstring = "Select MaNV From DangNhap where TaiKhoan='" + tk + "'";
-                dbMain.LayMa(sqlstring, CommandType.Text,ref  MaNV);
+                dbMain.LayMa(sqlstring, CommandType.Text, ref MaNV);
 
             }
 
             return true;
         }
-
         public DataSet LayTK()
         {
             return dbMain.ExecuteQueryDataSet("select *from DangNhap", CommandType.Text);
@@ -77,6 +77,22 @@ namespace QuanLyCaPhe.BSLayer
             error = "Sửa thành công";
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
-
+        public bool SuaPass(string MaNV,string Pass, ref string error)
+        {
+            string sqlString;
+            try
+            {
+                sqlString = "Update DangNhap Set MatKhau=N'" + Pass +
+                  "' Where MaNV= '" + MaNV + "'";
+                error = "Sửa thành công";
+            }
+            catch (SqlException)
+            {
+                error = "Sửa không được";
+                return false;
+            }
+            
+            return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
+        }
     }
 }

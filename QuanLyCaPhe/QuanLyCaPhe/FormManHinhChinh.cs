@@ -102,7 +102,6 @@ namespace QuanLyCaPhe
             idBan = (((sender as Button).Tag) as Ban).Id;
             dgvhoadon.Tag = (sender as Button).Tag;
             HienThiHoaDon(idBan);
-
         }
 
         /// <summary>
@@ -110,28 +109,32 @@ namespace QuanLyCaPhe
         /// </summary>
         private void btnThemMon_Click(object sender, EventArgs e)
         {
-            Ban ban = dgvhoadon.Tag as Ban;
-
-            //Lấy ID Hóa đơn của bàn
-            int idHoaDon = hoadon.LayIDHoaDonTheoBan(ban.Id);
-            int idFood = thucan.TimIDThucAn(cmbmonan.GetItemText(cmbmonan.SelectedItem), ref error);
-            int count = (int)nudThemmon.Value;
-
-            //Kiểm tra xem đã có sẵn hóa đơn chưa, nếu mới tạo thêm hóa đơn
-            if (idHoaDon == -1)
+            try
             {
-                hoadon.ThemHoaDonTheoBan(ban.Id, ref error);
-                chitiethd.ThemChiTietHD(hoadon.MaxIDHoaDon(ref error), idFood, count, ref error);
-                banan.ThayDoiTinhTrang(ban.Id, true, ref error);
-                flpnlBanAn.Controls.Clear();
-                LoadTable();
-                HienThiHoaDon(ban.Id);
+                Ban ban = dgvhoadon.Tag as Ban;
+
+                //Lấy ID Hóa đơn của bàn
+                int idHoaDon = hoadon.LayIDHoaDonTheoBan(ban.Id);
+                int idFood = thucan.TimIDThucAn(cmbmonan.GetItemText(cmbmonan.SelectedItem), ref error);
+                int count = (int)nudThemmon.Value;
+
+                //Kiểm tra xem đã có sẵn hóa đơn chưa, nếu mới tạo thêm hóa đơn
+                if (idHoaDon == -1)
+                {
+                    hoadon.ThemHoaDonTheoBan(ban.Id, ref error);
+                    chitiethd.ThemChiTietHD(hoadon.MaxIDHoaDon(ref error), idFood, count, ref error);
+                    banan.ThayDoiTinhTrang(ban.Id, true, ref error);
+                    flpnlBanAn.Controls.Clear();
+                    LoadTable();
+                    HienThiHoaDon(ban.Id);
+                }
+                else
+                {
+                    chitiethd.ThemChiTietHD(hoadon.MaxIDHoaDon(ref error), idFood, count, ref error);
+                    HienThiHoaDon(ban.Id);
+                }
             }
-            else
-            {
-                chitiethd.ThemChiTietHD(hoadon.MaxIDHoaDon(ref error), idFood, count, ref error);
-                HienThiHoaDon(ban.Id);
-            }
+            catch { }
         }
 
         #region Events
@@ -151,20 +154,23 @@ namespace QuanLyCaPhe
                 LoadTable();
                 menuAdmin.Visible = true;
                 panel1.Enabled = true;
-
                 menuThoat.Enabled = true;
                 menuDangNhap.Enabled = false;
+                QL.Visible = true;            
             }
             else
             {
                 if (quyentruycap == QuyenTruyCap.NhanVien)
                 {
-                    LoadTable();
+                    LoadTable();                   
+                    menuAdmin.Visible = false;                   
                     panel1.Enabled = true;
                     menuThoat.Enabled = true;
                     menuDangNhap.Enabled = false;
                 }
+                QL.Visible = false;
             }
+           
         }
 
         private void menuThoat_Click(object sender, EventArgs e)
@@ -224,9 +230,20 @@ namespace QuanLyCaPhe
 
         private void FormManHinhChinh_Load(object sender, EventArgs e)
         {
-            //panel1.Enabled = false;
-            //panel2.Enabled = false;
-            //panel3.Enabled = false;
+            QL.Visible = false;
+        }
+
+
+        private void menuHuongDanSuDung_Click(object sender, EventArgs e)
+        {
+            FormHuongDanSuDung hdsd = new FormHuongDanSuDung();
+            hdsd.Show();
+        }
+
+        private void menuThongTinUngDung_Click(object sender, EventArgs e)
+        {
+            FormThongTinUngDung tt = new FormThongTinUngDung();
+            tt.Show();
         }
         #endregion
 
@@ -244,6 +261,8 @@ namespace QuanLyCaPhe
                     flpnlBanAn.Controls.Clear();
                     LoadTable();
                     HienThiHoaDon((dgvhoadon.Tag as Ban).Id);
+                    FormThanhToan formThanhToan = new FormThanhToan(IDBill);
+                    formThanhToan.Show();
                 }
             }
         }

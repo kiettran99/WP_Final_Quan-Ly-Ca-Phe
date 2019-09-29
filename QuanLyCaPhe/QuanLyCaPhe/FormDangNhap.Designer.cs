@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDangNhap));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,7 +45,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtTen);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(17, 16);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
@@ -61,7 +62,7 @@
             this.txtMatKhau.Location = new System.Drawing.Point(140, 96);
             this.txtMatKhau.Margin = new System.Windows.Forms.Padding(2);
             this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.Size = new System.Drawing.Size(259, 25);
+            this.txtMatKhau.Size = new System.Drawing.Size(259, 26);
             this.txtMatKhau.TabIndex = 3;
             this.txtMatKhau.UseSystemPasswordChar = true;
             this.txtMatKhau.TextChanged += new System.EventHandler(this.txtMatKhau_TextChanged);
@@ -69,11 +70,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(23, 105);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 18);
+            this.label2.Size = new System.Drawing.Size(88, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Mật khẩu:";
             // 
@@ -84,24 +85,25 @@
             this.txtTen.Location = new System.Drawing.Point(140, 46);
             this.txtTen.Margin = new System.Windows.Forms.Padding(2);
             this.txtTen.Name = "txtTen";
-            this.txtTen.Size = new System.Drawing.Size(259, 25);
+            this.txtTen.Size = new System.Drawing.Size(259, 26);
             this.txtTen.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(4, 55);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 18);
+            this.label1.Size = new System.Drawing.Size(138, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên người dùng:";
             // 
             // btnThoat
             // 
             this.btnThoat.BackColor = System.Drawing.Color.Yellow;
-            this.btnThoat.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.Location = new System.Drawing.Point(292, 159);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
@@ -114,7 +116,7 @@
             // btnDangNhap
             // 
             this.btnDangNhap.BackColor = System.Drawing.Color.Red;
-            this.btnDangNhap.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangNhap.Location = new System.Drawing.Point(147, 159);
             this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangNhap.Name = "btnDangNhap";
@@ -135,6 +137,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangNhap);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

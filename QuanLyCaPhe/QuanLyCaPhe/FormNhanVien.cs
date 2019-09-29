@@ -17,10 +17,11 @@ namespace QuanLyCaPhe
         NhanVien BLNV = new NhanVien();
         string err;
         string tk, mk;
+        DangNhap BLDN = new DangNhap();
         public FormNhanVien()
         {
             InitializeComponent();
-            
+            dataTable = new DataTable();
         }
         void LoadData()
         {
@@ -34,9 +35,9 @@ namespace QuanLyCaPhe
                     dataTable = ds.Tables[0];
                     // đưa dữ liệu vào dataGridView
                     dgvNhanVien.DataSource = dataTable;
-                    
+                    dgvNhanVien.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
                 }
-                catch(SqlException errr)
+            catch (SqlException errr)
                 {
                     MessageBox.Show(errr.Message);
                 }
@@ -53,6 +54,7 @@ namespace QuanLyCaPhe
                 btnLuu.Enabled = false;              
                 // cho phép thao tác trên thêm/sửa/xóa/thoát               
                 btnSua.Enabled = true;
+            dgvNhanVien_CellClick(null, null);
                                           
         }
        
@@ -61,15 +63,22 @@ namespace QuanLyCaPhe
         private void btnReLoad_Click(object sender, EventArgs e)
         {
             LoadData();
-            
+            if (FormDangNhap.MaNV == 0)
+            {
+                btnSua.Enabled = false;
+            }
         }
 
         private void FormNhanVien_Load(object sender, EventArgs e)
         {
             LoadData();
-            BLNV.LayTKMK(FormDangNhap.MaNV, ref tk, ref mk);
-            txtTenTK.Text = tk;
-            txtPassTK.Text = mk;
+            BLNV.LayTKMK(FormDangNhap.MaNV.ToString(), ref tk, ref mk);
+            txtTenTK.Text = tk.ToString();
+            txtPassTK.Text = mk.ToString();
+            if (FormDangNhap.MaNV == 0)
+            {
+                btnSua.Enabled = false;
+            }
         }
 
         private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -94,12 +103,16 @@ namespace QuanLyCaPhe
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            btnSua.Enabled = true;
+            btnLuu.Enabled = true;
+            btnHuy.Enabled = true;
+            btnThoat.Enabled = true;
 
             //thuc hiện lệnh
             NhanVien blnv = new NhanVien();
-            if (FormDangNhap.MaNV != txtMaNV.Text.Trim())
+            if (FormDangNhap.MaNV.ToString() != txtMaNV.Text.Trim())
                 MessageBox.Show("Bạn không đủ quyền để thay đổi thông tin của người khác", "Thông báo",MessageBoxButtons.OKCancel ,MessageBoxIcon.Error);
-           else blnv.SuaNhanVien(FormDangNhap.MaNV, txtHoNV.Text.Trim(), txtTenNV.Text.Trim(), rdbNu.Checked, dtbNgayNV.Value,
+           else blnv.SuaNhanVien(FormDangNhap.MaNV.ToString(), txtHoNV.Text.Trim(), txtTenNV.Text.Trim(), rdbNu.Checked, dtbNgayNV.Value,
                 dtbNgaySinh.Value, txtDiaChi.Text.Trim(), txtDienThoai.Text.Trim(), ref err);
             // Load lại DataGridView
             LoadData();
@@ -142,6 +155,17 @@ namespace QuanLyCaPhe
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
             btnReLoad.Enabled = true;
+            if (FormDangNhap.MaNV == 0)
+            {
+                btnSua.Enabled = false;
+            }
+        }
+
+        private void btnSuaPass_Click(object sender, EventArgs e)
+        {
+            
+            BLDN.SuaPass(txtMaNV.Text.Trim(), txtNewPass.Text.Trim(), ref err);
+            MessageBox.Show(err);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

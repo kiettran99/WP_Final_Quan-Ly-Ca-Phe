@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyCaPhe.BSLayer;
@@ -27,6 +28,9 @@ namespace QuanLyCaPhe
         string err;
         string tk, mk;
         private string error;
+        bool ThemF = false;
+        string tenanh = "";
+
         #endregion
 
         public FormAdmin()
@@ -87,6 +91,8 @@ namespace QuanLyCaPhe
         #region tabthucan
         private void btnThemF_Click(object sender, EventArgs e)
         {
+            ThemF = true;
+
             btnThemF.Enabled = false;
 
             btnXoaF.Enabled = false;
@@ -100,8 +106,10 @@ namespace QuanLyCaPhe
             txtSFname.ResetText();
             cmbDanhMucF.ResetText();
             txtGiaF.ResetText();
-            Random rd = new Random();
-            txtFID.Text = rd.Next(0, 10000).ToString();
+            int idTA = 1;
+            if (dgvThucAn.Rows.Count > 1)
+                idTA = (int.Parse(dgvThucAn.Rows[dgvThucAn.Rows.Count - 2].Cells[0].Value.ToString()) + 1);
+            txtFID.Text = idTA.ToString();
 
         }
 
@@ -124,17 +132,23 @@ namespace QuanLyCaPhe
 
         private void btnHuyF_Click(object sender, EventArgs e)
         {
-            btnThemF.Enabled = false;
+            btnThemF.Enabled = true;
             btnXoaF.Enabled = true;
             btnSuaF.Enabled = true;
-            btnXemF.Enabled = false;
-            btnLuuF.Enabled = true;
+            btnXemF.Enabled = true;
+            btnLuuF.Enabled = false;
             btnHuyF.Enabled = false;
             dgvThucAn_CellClick(null, null);
         }
 
         private void btnXoaF_Click(object sender, EventArgs e)
         {
+            btnThemF.Enabled = true;
+            btnXoaF.Enabled = true;
+            btnSuaF.Enabled = true;
+            btnXemF.Enabled = true;
+            btnLuuF.Enabled = true;
+            btnHuyF.Enabled = true;
             try
             {
                 DialogResult dr = MessageBox.Show("Bạn có muốn xóa ?", "Thông báo", MessageBoxButtons.OKCancel);
@@ -151,15 +165,26 @@ namespace QuanLyCaPhe
         }
         private void btnLuuF_Click(object sender, EventArgs e)
         {
-            BLTA.ThemThucAn(txtFID.Text, txtFName.Text.Trim(), txtGiaF.Text.Trim(),
-               cmbDanhMucF.Text.Trim(), ref err);
-            // Load lại DataGridView
-            LoadDataNV();
-            // THông Báo
-            MessageBox.Show(err);
+            if (ThemF == true)
+            {
+                BLTA.ThemThucAn(txtFID.Text, cmbDanhMucF.Text.Trim(), float.Parse(txtGiaF.Text.Trim()),
+                   txtFName.Text.Trim(), ref err);
+                // Load lại DataGridView
+                LoadDataF();
+                // THông Báo
+                MessageBox.Show(err);
+            }
+            else
+            {
+                BLTA.SuaThucAn(txtFID.Text.Trim(), cmbDanhMucF.Text.Trim(), txtGiaF.Text.Trim(), txtFName.Text.Trim(), ref err);
+                LoadDataF();
+                MessageBox.Show(err);
+            }
         }
         private void btnSuaF_Click(object sender, EventArgs e)
         {
+            ThemF = false;
+
             txtFID.ResetText();
             txtFName.ResetText();
             cmbDanhMucF.ResetText();
@@ -200,7 +225,7 @@ namespace QuanLyCaPhe
             txtTenDM.ResetText();
             txtIDDM.ResetText();
             // không cho thao tác trên các nút lưu/hủy
-            btnThemDM.Enabled = false;
+            btnThemDM.Enabled = true;
             btnLuuDM.Enabled = false;
             btnXemDM.Enabled = true;
             btnXoaDM.Enabled = true;
@@ -216,9 +241,11 @@ namespace QuanLyCaPhe
             btnXemDM.Enabled = false;
             btnLuuDM.Enabled = true;
             txtIDDM.ResetText();
-            txtTenDM.ResetText();
-            Random rd = new Random();
-            txtIDDM.Text = rd.Next(0, 100000).ToString();
+            txtTenDM.ResetText();           
+            int idDM = 1;
+            if (dgvDanhMuc.Rows.Count > 1)
+                idDM = (int.Parse(dgvDanhMuc.Rows[dgvDanhMuc.Rows.Count - 2].Cells[0].Value.ToString()) + 1);
+            txtIDDM.Text = idDM.ToString();
         }
 
         private void btnXoaDM_Click(object sender, EventArgs e)
@@ -241,12 +268,13 @@ namespace QuanLyCaPhe
         private void btnSuaDM_Click(object sender, EventArgs e)
         {
             themDM = false;
+            dgvDanhMuc_CellClick(null, null);
             txtTenDM.ResetText();
             btnSuaDM.Enabled = false;
             btnXemDM.Enabled = false;
             btnXoaDM.Enabled = false;
             btnLuuDM.Enabled = true;
-            dgvDanhMuc_CellClick(null, null);
+           
         }
 
         private void btnXemDM_Click(object sender, EventArgs e)
@@ -277,12 +305,13 @@ namespace QuanLyCaPhe
                     BTLTA.SuaDanhMuc(txtIDDM.Text, txtTenDM.Text, ref err);
                     // Load lại DataGridView
                     LoadDataDM();
-                    MessageBox.Show("Sửa thành công !");
+                    
                 }
-                catch (Exception err)
+                catch (Exception error)
                 {
-                    error = err.Message;
+                    err= error.Message;
                 }
+                MessageBox.Show(err);
             }
         }
 
@@ -357,8 +386,11 @@ namespace QuanLyCaPhe
             txtTrangThaiB.ResetText();
             txtIDB.ResetText();
             txtTenB.ResetText();
-            Random rd = new Random();
-            txtIDB.Text = rd.Next(0, 100000).ToString();
+           
+            int idBan= 1;
+            if (dgvBanAn.Rows.Count > 1)
+                idBan = (int.Parse(dgvBanAn.Rows[dgvBanAn.Rows.Count - 2].Cells[0].Value.ToString()) + 1);
+            txtIDB.Text = idBan.ToString();
         }
 
         private void btnXoaB_Click(object sender, EventArgs e)
@@ -435,6 +467,25 @@ namespace QuanLyCaPhe
         #endregion
 
         #region TabTaiKhoan
+       
+        private void btnThemTK_Click(object sender, EventArgs e)
+        {
+            btnThemTK.Enabled = false;
+            btnXoaTK.Enabled = false;
+            btnReNewTK.Enabled = false;
+            btnLuuTK.Enabled = true;
+            btnHuyTK.Enabled = true;
+            btnReloadTK.Enabled = true;
+
+            txtMauKhauTK.ResetText();
+            txtTenTK.ResetText();
+            txtMaNVTK.ResetText();
+            MessageBox.Show("Hãy chắc mã nhân viên bạn điền là đúng");
+            txtMaNVTK.Enabled = true;
+
+        }
+      
+
         private void LoadTTTK()
         {
             txtMaNVTK.Enabled = false;
@@ -489,7 +540,7 @@ namespace QuanLyCaPhe
 
         private void btnLuuTK_Click(object sender, EventArgs e)
         {
-            BLDN.ThemTK(txtTenTK.Text.Trim(), txtMauKhauTK.Text.Trim(), txtMaNVTK.Text.Trim(), ref err);
+            BLDN.ThemTK(txtTenTK.Text.Trim(), txtMaNVTK.Text.Trim(), txtMaNVTK.Text.Trim(), ref err);
             // Load lại DataGridView
             LoadTTTK();
             // THông Báo
@@ -546,8 +597,9 @@ namespace QuanLyCaPhe
                 dataTable.Clear();
                 DataSet ds = BLNV.LayNhanVien();
                 dataTable = ds.Tables[0];
-                // đưa dữ liệu vào dataGridView
+                // đưa dữ liệu vào dataGridView                
                 dgvNhanVien.DataSource = dataTable;
+                dgvNhanVien.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             }
             catch (Exception errr)
             {
@@ -633,15 +685,17 @@ namespace QuanLyCaPhe
         private void btnLuuNV_Click(object sender, EventArgs e)
         {
 
+            MemoryStream pic = new MemoryStream();           
+            pictureBox1.Image.Save(pic, pictureBox1.Image.RawFormat);
             BLNV.ThemNhanVien(txtMaNV.Text, txtHoNV.Text.Trim(), txtTenNV.Text.Trim(), rdbNu.Checked, dtbNgayNV.Value,
-                    dtbNgaySinh.Value, txtDiaChi.Text.Trim(), txtDienThoai.Text.Trim(), ref err);
+                   dtbNgaySinh.Value, txtDiaChi.Text.Trim(), txtDienThoai.Text.Trim(), tenanh, ref err);
             BLCHC.ThemNhanVien(txtMaNV.Text.Trim(), txtTenNV.Text.Trim(), ref err);
             BLTL.ThemNhanVien(txtMaNV.Text.Trim(), txtTenNV.Text.Trim(), ref err);
+
             // Load lại DataGridView
             LoadDataNV();
             // THông Báo
             MessageBox.Show(err);
-
         }
 
         private void btnReloadNV_Click(object sender, EventArgs e)
@@ -667,6 +721,8 @@ namespace QuanLyCaPhe
                 DialogResult dr = MessageBox.Show("Bạn có muốn xóa ?", "Thông báo", MessageBoxButtons.OKCancel);
                 if (dr == DialogResult.OK)
                 {
+                    BLTL.XoaNV(txtMaNV.Text.Trim(), ref err);
+                    BLCHC.XoaNhanVien(txtMaNV.Text.Trim(), ref err);
                     BLNV.XoaNhanVien(txtMaNV.Text, ref err);
                     LoadDataNV();
                 }
@@ -690,13 +746,24 @@ namespace QuanLyCaPhe
                 txtTenNV.Text = dgvNhanVien.Rows[r].Cells[2].Value.ToString();
                 txtDienThoai.Text = dgvNhanVien.Rows[r].Cells[5].Value.ToString();
                 txtDiaChi.Text = dgvNhanVien.Rows[r].Cells[6].Value.ToString();
+                MemoryStream ms = new MemoryStream((byte[])dgvNhanVien.CurrentRow.Cells["Anh"].Value);
+                pictureBox1.Image = Image.FromStream(ms);
             }
             catch
             {
 
             }
         }
+        private void btnChonAnh_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
 
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = Image.FromFile(openFile.FileName);
+                tenanh = openFile.FileName;
+            }
+        }
         #endregion
 
         #region TabChamCong
@@ -870,27 +937,7 @@ namespace QuanLyCaPhe
         }
         #endregion
 
-        private void btnThemTK_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void btnReLoad_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
 
         private void txtFName_TextChanged(object sender, EventArgs e)
         {
@@ -905,6 +952,13 @@ namespace QuanLyCaPhe
         private void dgvDanhThu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void FormAdmin_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'QuanLyCaPheDataSet.DanhThu_Report' table. You can move, or remove it, as needed.
+            this.DanhThu_ReportTableAdapter.Fill(this.QuanLyCaPheDataSet.DanhThu_Report, dtpNgayTaoHoaDon.Value, dtpNgayKetThucHoaDon.Value);
+            this.reportViewer1.RefreshReport();
         }
 
         private void btnSua_Click(object sender, EventArgs e)

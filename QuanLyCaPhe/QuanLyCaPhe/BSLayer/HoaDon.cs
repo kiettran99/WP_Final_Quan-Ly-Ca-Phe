@@ -28,7 +28,7 @@ namespace QuanLyCaPhe.BSLayer
             int id = -1;    //ID Hóa đơn mặc định không tìm thấy
             //Kiểm tra xem dt có dữ liệu hay không ?
             if (dt.Rows.Count > 0)
-                id = (int)dt.Rows[0]["IDHoaDon"];
+                id = (int)dt.Rows[0]["IDHoaDon"];            
             return id;
         }
         public void CheckOut(int id, int discount, float TongTien)

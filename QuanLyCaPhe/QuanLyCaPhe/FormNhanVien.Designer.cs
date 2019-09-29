@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNhanVien));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.txtNewPass = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnThoatTK = new System.Windows.Forms.Button();
-            this.btnLuuPass = new System.Windows.Forms.Button();
             this.btnSuaPass = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtPassTK = new System.Windows.Forms.TextBox();
@@ -53,6 +53,7 @@
             this.gbTongQuat = new System.Windows.Forms.GroupBox();
             this.dgvNhanVien = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,11 +98,11 @@
             this.tabPage2.Controls.Add(this.panel4);
             this.tabPage2.Controls.Add(this.panel3);
             this.tabPage2.Controls.Add(this.panel2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(746, 439);
+            this.tabPage2.Size = new System.Drawing.Size(989, 551);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tài Khoản";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -110,41 +111,40 @@
             // 
             this.panel5.Controls.Add(this.txtNewPass);
             this.panel5.Controls.Add(this.label12);
-            this.panel5.Location = new System.Drawing.Point(227, 206);
+            this.panel5.Location = new System.Drawing.Point(283, 274);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(287, 32);
+            this.panel5.Size = new System.Drawing.Size(401, 37);
             this.panel5.TabIndex = 4;
             // 
             // txtNewPass
             // 
-            this.txtNewPass.Location = new System.Drawing.Point(161, 6);
+            this.txtNewPass.Location = new System.Drawing.Point(183, 6);
             this.txtNewPass.Margin = new System.Windows.Forms.Padding(2);
             this.txtNewPass.Name = "txtNewPass";
-            this.txtNewPass.Size = new System.Drawing.Size(119, 21);
+            this.txtNewPass.Size = new System.Drawing.Size(214, 22);
             this.txtNewPass.TabIndex = 1;
             this.txtNewPass.UseSystemPasswordChar = true;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(2, 6);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(14, 6);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(162, 24);
+            this.label12.Size = new System.Drawing.Size(171, 25);
             this.label12.TabIndex = 0;
             this.label12.Text = "Mật Khẩu Mới :";
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btnThoatTK);
-            this.panel4.Controls.Add(this.btnLuuPass);
             this.panel4.Controls.Add(this.btnSuaPass);
-            this.panel4.Location = new System.Drawing.Point(246, 297);
+            this.panel4.Location = new System.Drawing.Point(365, 365);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(256, 42);
+            this.panel4.Size = new System.Drawing.Size(257, 42);
             this.panel4.TabIndex = 3;
             // 
             // btnThoatTK
@@ -158,18 +158,9 @@
             this.btnThoatTK.UseVisualStyleBackColor = true;
             this.btnThoatTK.Click += new System.EventHandler(this.btnThoat_Click);
             // 
-            // btnLuuPass
-            // 
-            this.btnLuuPass.Location = new System.Drawing.Point(101, 0);
-            this.btnLuuPass.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLuuPass.Name = "btnLuuPass";
-            this.btnLuuPass.Size = new System.Drawing.Size(62, 42);
-            this.btnLuuPass.TabIndex = 1;
-            this.btnLuuPass.Text = "Lưu";
-            this.btnLuuPass.UseVisualStyleBackColor = true;
-            // 
             // btnSuaPass
             // 
+            this.btnSuaPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuaPass.Location = new System.Drawing.Point(1, 0);
             this.btnSuaPass.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuaPass.Name = "btnSuaPass";
@@ -177,15 +168,16 @@
             this.btnSuaPass.TabIndex = 0;
             this.btnSuaPass.Text = "Sữa";
             this.btnSuaPass.UseVisualStyleBackColor = true;
+            this.btnSuaPass.Click += new System.EventHandler(this.btnSuaPass_Click);
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.txtPassTK);
             this.panel3.Controls.Add(this.label11);
-            this.panel3.Location = new System.Drawing.Point(227, 143);
+            this.panel3.Location = new System.Drawing.Point(311, 211);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(287, 32);
+            this.panel3.Size = new System.Drawing.Size(371, 32);
             this.panel3.TabIndex = 1;
             // 
             // txtPassTK
@@ -193,18 +185,18 @@
             this.txtPassTK.Location = new System.Drawing.Point(124, 6);
             this.txtPassTK.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassTK.Name = "txtPassTK";
-            this.txtPassTK.Size = new System.Drawing.Size(156, 21);
+            this.txtPassTK.Size = new System.Drawing.Size(245, 22);
             this.txtPassTK.TabIndex = 1;
             this.txtPassTK.UseSystemPasswordChar = true;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(2, 6);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(118, 24);
+            this.label11.Size = new System.Drawing.Size(126, 25);
             this.label11.TabIndex = 0;
             this.label11.Text = "Mật Khẩu :";
             // 
@@ -212,10 +204,10 @@
             // 
             this.panel2.Controls.Add(this.txtTenTK);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Location = new System.Drawing.Point(227, 75);
+            this.panel2.Location = new System.Drawing.Point(311, 143);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(287, 32);
+            this.panel2.Size = new System.Drawing.Size(373, 32);
             this.panel2.TabIndex = 0;
             // 
             // txtTenTK
@@ -224,17 +216,17 @@
             this.txtTenTK.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenTK.Name = "txtTenTK";
             this.txtTenTK.ReadOnly = true;
-            this.txtTenTK.Size = new System.Drawing.Size(156, 21);
+            this.txtTenTK.Size = new System.Drawing.Size(247, 22);
             this.txtTenTK.TabIndex = 1;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(2, 6);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(96, 24);
+            this.label10.Size = new System.Drawing.Size(102, 25);
             this.label10.TabIndex = 0;
             this.label10.Text = "Tên TK :";
             // 
@@ -244,11 +236,11 @@
             this.tpThongTin.Controls.Add(this.gbTongQuat);
             this.tpThongTin.Controls.Add(this.gbChiTiet);
             this.tpThongTin.Controls.Add(this.label1);
-            this.tpThongTin.Location = new System.Drawing.Point(4, 24);
+            this.tpThongTin.Location = new System.Drawing.Point(4, 25);
             this.tpThongTin.Margin = new System.Windows.Forms.Padding(2);
             this.tpThongTin.Name = "tpThongTin";
             this.tpThongTin.Padding = new System.Windows.Forms.Padding(2);
-            this.tpThongTin.Size = new System.Drawing.Size(746, 439);
+            this.tpThongTin.Size = new System.Drawing.Size(989, 551);
             this.tpThongTin.TabIndex = 0;
             this.tpThongTin.Text = "Thông Tin Nhân VIên";
             this.tpThongTin.UseVisualStyleBackColor = true;
@@ -262,7 +254,7 @@
             this.panel1.Controls.Add(this.btnHuy);
             this.panel1.Controls.Add(this.btnLuu);
             this.panel1.Controls.Add(this.btnSua);
-            this.panel1.Location = new System.Drawing.Point(1, 2);
+            this.panel1.Location = new System.Drawing.Point(41, 4);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(187, 263);
@@ -354,7 +346,7 @@
             this.gbTongQuat.Margin = new System.Windows.Forms.Padding(2);
             this.gbTongQuat.Name = "gbTongQuat";
             this.gbTongQuat.Padding = new System.Windows.Forms.Padding(2);
-            this.gbTongQuat.Size = new System.Drawing.Size(734, 168);
+            this.gbTongQuat.Size = new System.Drawing.Size(983, 281);
             this.gbTongQuat.TabIndex = 13;
             this.gbTongQuat.TabStop = false;
             this.gbTongQuat.Text = "Thông tin tổng quát";
@@ -364,6 +356,7 @@
             this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNhanVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.Column9,
             this.Column4,
             this.Column6,
             this.Column7,
@@ -374,7 +367,7 @@
             this.dgvNhanVien.Location = new System.Drawing.Point(4, 19);
             this.dgvNhanVien.Margin = new System.Windows.Forms.Padding(2);
             this.dgvNhanVien.Name = "dgvNhanVien";
-            this.dgvNhanVien.Size = new System.Drawing.Size(726, 142);
+            this.dgvNhanVien.Size = new System.Drawing.Size(979, 257);
             this.dgvNhanVien.TabIndex = 0;
             this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellClick);
             // 
@@ -383,6 +376,12 @@
             this.Column1.DataPropertyName = "MaNV";
             this.Column1.HeaderText = "ID NV";
             this.Column1.Name = "Column1";
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "HinhAnh";
+            this.Column9.HeaderText = "Ảnh";
+            this.Column9.Name = "Column9";
             // 
             // Column4
             // 
@@ -447,7 +446,7 @@
             this.gbChiTiet.Controls.Add(this.label3);
             this.gbChiTiet.Controls.Add(this.label2);
             this.gbChiTiet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbChiTiet.Location = new System.Drawing.Point(192, 103);
+            this.gbChiTiet.Location = new System.Drawing.Point(326, 105);
             this.gbChiTiet.Margin = new System.Windows.Forms.Padding(2);
             this.gbChiTiet.Name = "gbChiTiet";
             this.gbChiTiet.Padding = new System.Windows.Forms.Padding(2);
@@ -604,7 +603,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.label1.Font = new System.Drawing.Font("Sitka Small", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(186, 14);
+            this.label1.Location = new System.Drawing.Point(314, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(558, 71);
@@ -616,12 +615,12 @@
             this.tbpThongTin.AccessibleName = "";
             this.tbpThongTin.Controls.Add(this.tpThongTin);
             this.tbpThongTin.Controls.Add(this.tabPage2);
-            this.tbpThongTin.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbpThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbpThongTin.Location = new System.Drawing.Point(-1, -1);
             this.tbpThongTin.Margin = new System.Windows.Forms.Padding(2);
             this.tbpThongTin.Name = "tbpThongTin";
             this.tbpThongTin.SelectedIndex = 0;
-            this.tbpThongTin.Size = new System.Drawing.Size(754, 467);
+            this.tbpThongTin.Size = new System.Drawing.Size(997, 580);
             this.tbpThongTin.TabIndex = 0;
             // 
             // FormNhanVien
@@ -629,12 +628,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(751, 464);
+            this.ClientSize = new System.Drawing.Size(996, 581);
             this.Controls.Add(this.tbpThongTin);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormNhanVien";
-            this.Text = "NhanVien";
+            this.Text = "Thông Tin Nhân Viên";
             this.Load += new System.EventHandler(this.FormNhanVien_Load);
             this.tabPage2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -670,14 +670,6 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.GroupBox gbTongQuat;
         private System.Windows.Forms.DataGridView dgvNhanVien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.GroupBox gbChiTiet;
         private System.Windows.Forms.DateTimePicker dtbNgaySinh;
         private System.Windows.Forms.Label label9;
@@ -701,7 +693,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnThoatTK;
-        private System.Windows.Forms.Button btnLuuPass;
         private System.Windows.Forms.Button btnSuaPass;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtPassTK;
@@ -709,5 +700,14 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtTenTK;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewImageColumn Column9;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }

@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormThanhPho));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtTenTP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvThanhPho = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtXoa = new System.Windows.Forms.Button();
             this.btSua = new System.Windows.Forms.Button();
             this.btLuu = new System.Windows.Forms.Button();
@@ -39,8 +42,6 @@
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThanhPho)).BeginInit();
             this.SuspendLayout();
@@ -52,9 +53,9 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Fuchsia;
             this.groupBox1.Location = new System.Drawing.Point(23, 16);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(502, 79);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
@@ -65,7 +66,7 @@
             this.txtTenTP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTenTP.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.txtTenTP.Location = new System.Drawing.Point(166, 32);
-            this.txtTenTP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTenTP.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenTP.Name = "txtTenTP";
             this.txtTenTP.Size = new System.Drawing.Size(259, 30);
             this.txtTenTP.TabIndex = 3;
@@ -88,12 +89,26 @@
             this.Column1,
             this.Column2});
             this.dgvThanhPho.Location = new System.Drawing.Point(45, 163);
-            this.dgvThanhPho.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvThanhPho.Margin = new System.Windows.Forms.Padding(2);
             this.dgvThanhPho.Name = "dgvThanhPho";
             this.dgvThanhPho.RowTemplate.Height = 28;
             this.dgvThanhPho.Size = new System.Drawing.Size(446, 201);
             this.dgvThanhPho.TabIndex = 11;
             this.dgvThanhPho.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvThanhPho_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "MaThanhPho";
+            this.Column1.HeaderText = "MãTP";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 200;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "TenThanhPho";
+            this.Column2.HeaderText = "TênTP";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 200;
             // 
             // BtXoa
             // 
@@ -185,20 +200,6 @@
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "MaThanhPho";
-            this.Column1.HeaderText = "MãTP";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 200;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "TenThanhPho";
-            this.Column2.HeaderText = "TênTP";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 200;
-            // 
             // FormThanhPho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,9 +214,10 @@
             this.Controls.Add(this.btThem);
             this.Controls.Add(this.dgvThanhPho);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormThanhPho";
-            this.Text = "Quản Lí Thành Phố";
+            this.Text = "Quản LýThành Phố";
             this.Load += new System.EventHandler(this.FormThanhPho_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

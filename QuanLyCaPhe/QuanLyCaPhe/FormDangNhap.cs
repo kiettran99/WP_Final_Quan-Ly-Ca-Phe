@@ -14,8 +14,8 @@ namespace QuanLyCaPhe
     {
         DangNhap DN = new DangNhap();
         string err;
-        public static string MaNV;
-
+        public static int MaNV;
+       
         public FormDangNhap()
         {
             InitializeComponent();
@@ -28,25 +28,18 @@ namespace QuanLyCaPhe
             {
                 if (txtTen.Text.Trim() == "admin" && txtMatKhau.Text.Trim() == "admin")
                 {
+                    FormAdmin formAdmin = new FormAdmin();
+                    formAdmin.ShowDialog();
                     FormManHinhChinh.quyentruycap = QuyenTruyCap.Administrator;
                 }
                 else
                 {
+                    FormNhanVien formNhanVien = new FormNhanVien();
+                    formNhanVien.ShowDialog();
                     FormManHinhChinh.quyentruycap = QuyenTruyCap.NhanVien;
                 }
-
             }
-            else
-            {
-                FormManHinhChinh.quyentruycap = QuyenTruyCap.Khong;
-            }
-            if (err == "Thành Công")
-            {
-                Close();
-                MessageBox.Show(err);
-            }
-            else
-                MessageBox.Show(err);          
+            MessageBox.Show(err);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

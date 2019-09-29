@@ -38,21 +38,29 @@ namespace QuanLyCaPhe.BSLayer
             error = "Sửa thành công";
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
-        public void LayTKMK(string MaNV, ref string TK, ref string MK)
-        {
-            string sqlString;
-            sqlString = "Select TaiKhoan From DangNhap where MaNV = N'" + MaNV + "'";
-            dbMain.LayMa(sqlString, CommandType.Text, ref TK);
-            sqlString = "Select MatKhau From DangNhap where MaNV=N'" + MaNV + "'";
-            dbMain.LayMa(sqlString, CommandType.Text, ref MK);
-        }
-
-        public bool ThemNhanVien(string MaNV, string Ho, string TenNV, bool Nu, DateTime NgayNV, DateTime NgaySinh, string DiaChi, string SDT, ref string error)
+        public void LayTKMK(string MaNV, ref string  TK, ref string MK)
         {
             string sqlString;
             try
             {
-                sqlString = $"Insert into NhanVien values('{MaNV.Trim()}', N'{Ho.Trim()}', N'{TenNV.Trim()}', N'{Nu}', N'{NgaySinh.ToShortDateString()}', N'{SDT.Trim()}', N'{DiaChi.Trim()}', N'{NgayNV.ToString()}')";
+                sqlString = "Select TaiKhoan From DangNhap where MaNV = N'" + MaNV + "'";
+                dbMain.LayTKMK(sqlString, CommandType.Text, ref TK);
+                sqlString = "Select MatKhau From DangNhap where MaNV=N'" + MaNV + "'";
+                dbMain.LayTKMK(sqlString, CommandType.Text, ref MK);
+            }
+            catch
+            {
+
+            }
+        }
+
+        public bool ThemNhanVien(string MaNV, string Ho, string TenNV, bool Nu, DateTime NgayNV, DateTime NgaySinh, string DiaChi, string SDT, string hinhanh, ref string error)
+        {
+            string sqlString;
+            try
+            {
+                sqlString = $"Insert into NhanVien values('{MaNV.Trim()}', N'{Ho.Trim()}', N'{TenNV.Trim()}', N'{Nu}', N'{NgaySinh.ToShortDateString()}', N'{SDT.Trim()}', N'{DiaChi.Trim()}', N'{NgayNV.ToString()}',"
+                    + $"(select BulkColumn from Openrowset(Bulk'{hinhanh}',single_Blob) as Image))";
             }
             catch (SqlException)
             {
@@ -65,7 +73,9 @@ namespace QuanLyCaPhe.BSLayer
 
         public bool XoaNhanVien(string MaNV, ref string error)
         {
+
             string sqlString = $"delete from NhanVien where MaNV = '{MaNV}'";
+
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
     }

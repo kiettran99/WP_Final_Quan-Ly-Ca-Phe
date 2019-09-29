@@ -135,7 +135,7 @@ namespace QuanLyCaPhe.DBLayer
             }
             return f;
         }
-        public void LayMa(string strSQL, CommandType ct, ref string MaNV)
+        public void LayMa(string strSQL, CommandType ct, ref int MaNV)
         {
 
             try
@@ -146,7 +146,30 @@ namespace QuanLyCaPhe.DBLayer
 
                 cmd.CommandText = strSQL;
                 cmd.CommandType = ct;
-                MaNV = (String)cmd.ExecuteScalar().ToString();
+                MaNV = int.Parse(cmd.ExecuteScalar().ToString());
+            }
+            catch (SqlException)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+        public void LayTKMK(string strSQL, CommandType ct, ref string TT)
+        {
+
+            try
+            {
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+                conn.Open();
+
+                cmd.CommandText = strSQL;
+                cmd.CommandType = ct;
+                TT = (String)(cmd.ExecuteScalar().ToString());
             }
             catch (SqlException)
             {

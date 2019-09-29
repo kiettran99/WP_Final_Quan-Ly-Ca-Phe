@@ -27,19 +27,20 @@ namespace QuanLyCaPhe.BSLayer
         }
 
 
-        public bool ThemThucAn(string MaThucAn, string DanhMuc, string Gia, string TenMon, ref string error)
+        public bool ThemThucAn(string MaThucAn, string DanhMuc, float Gia, string TenMon, ref string error)
         {
             string sqlString;
             try
             {
-                sqlString = $"Insert into ThucAn values('{MaThucAn.Trim()}', N'{DanhMuc.Trim()}', N'{Gia.Trim()}',  N'{TenMon.ToString()}')";
+                sqlString = $"Insert into ThucAn values(N'{MaThucAn.Trim()}',  N'{TenMon.ToString()}', N'{DanhMuc.Trim()}', '{Gia}')";
+                error = "Thêm thành công";
             }
             catch (SqlException)
             {
                 error = "Thêm không được";
                 return false;
             }
-            error = "Thêm thành công";
+           
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
         public bool SuaThucAn(string MaThucAn, string DanhMuc, string Gia, string TenMon, ref string error)
@@ -47,20 +48,21 @@ namespace QuanLyCaPhe.BSLayer
             string sqlString;
             try
             {
-                sqlString = "Update ThucAn Set MaThucAn=N'" + MaThucAn + "',DanhMuc=N'" + DanhMuc +
-                "',Gia='" + Gia + "',TenMon='" + TenMon + "'";
+                sqlString = "Update ThucAn Set TenThucAn = N'" + TenMon +"',IDLoaiThucAn=N'" + int.Parse(DanhMuc) +
+                "',Gia='" + float.Parse(Gia) + "'where IDThucAn = '" + int.Parse(MaThucAn) + "'";
+                error = "Sửa thành công";
             }
             catch (SqlException)
             {
                 error = "Sửa không được";
                 return false;
             }
-            error = "Sửa thành công";
+           
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
         public bool XoaThucAn(string MaThucAn, ref string error)
         {
-            string sqlString = $"delete from ThucAn where MaThucAn = '{MaThucAn}'";
+            string sqlString = $"delete from ThucAn where IDThucAn = '{MaThucAn}'";
             return dbMain.MyExecuteNonQuery(sqlString, CommandType.Text, ref error);
         }
 

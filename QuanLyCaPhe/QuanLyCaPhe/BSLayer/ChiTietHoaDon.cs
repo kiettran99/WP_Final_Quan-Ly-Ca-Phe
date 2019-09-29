@@ -30,7 +30,14 @@ namespace QuanLyCaPhe.BSLayer
         public void ThemChiTietHD(int idHoaDon, int idThucAn, int count, ref string error)
         {
             string strSQL = $"Insert into ChiTietHoaDon(IDHoaDon, IDThucAn, SoLuong) values({idHoaDon}, {idThucAn}, {count})";
-            db.MyExecuteNonQuery(strSQL, CommandType.Text, ref error);
+            if(db.MyExecuteNonQuery(strSQL, CommandType.Text, ref error) == false)
+            {
+                int soluong=0;
+                db.LayMa($"select Soluong from ChiTietHoaDon where IDHoaDon ='" + idHoaDon + "'AND IDTHUCAN ='" + idThucAn + "'", CommandType.Text, ref soluong);
+                soluong += count;
+                strSQL = "Update ChiTietHoaDon Set SoLuong =N'" + soluong+ "'where IDHoaDon =N'" + idHoaDon + "'AND IDThucAn =N'" + idThucAn + "'";
+                db.MyExecuteNonQuery(strSQL, CommandType.Text, ref error);
+            }
         }
 
         public void ThemChiTietHDTonTai(int idHoaDon, int idThucAn, int count, ref string error)
